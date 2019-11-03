@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AllPlacesComponent } from './places/components/all-places/all-places.component';
+import { UpcomingVacationsComponent } from './places/components/upcoming-vacations/upcoming-vacations.component';
+import { PastVacationsComponent } from './places/components/past-vacations/past-vacations.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AllPlacesComponent,
+    UpcomingVacationsComponent,
+    PastVacationsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

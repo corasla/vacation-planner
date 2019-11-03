@@ -1,0 +1,36 @@
+<div class="general-container">
+  <div *ngFor="let place of places" class="place">
+    <div class="tile">
+      <span class="label">
+        Name:
+      </span>
+      <span class="value">
+        {{ place.name }}
+      </span>
+    </div>
+    <div class="tile">
+      <span class="label">
+        Description:
+      </span>
+      <span class="value">
+        {{ place.description }}
+      </span>
+    </div>
+    <div class="tile">
+      <span class="label">
+        Country:
+      </span>
+      <span class="value">
+        {{ place.country }}
+      </span>
+    </div>
+    <div class="tile">
+      <span class="label">
+        City:
+      </span>
+      <span class="value">
+        {{ place.city }}
+      </span>
+    </div>
+  </div>
+</div>
