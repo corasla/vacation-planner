@@ -1,7 +1,10 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges
 } from '@angular/core';
 
 @Component({
@@ -9,7 +12,7 @@ import {
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.sass']
 })
-export class PlaceComponent implements OnInit {
+export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() name: string
   @Input() description: string
   @Input() country: string
@@ -18,6 +21,14 @@ export class PlaceComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('inited comp Place -> ', this.name)
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('some changes -> ', changes)
+  }
+
+  ngOnDestroy() {
+    console.log('destroying component Place -> ', this.name)
+  }
 }
