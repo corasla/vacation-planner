@@ -31,4 +31,12 @@
         {{ city }}
       </span>
     </div>
+    <div>Initial data binded only!</div>
+    <input [ngModel]="initialDataBindOnly">
+    {{ initialDataBindOnly }}
+    <hr>
+    <div>Initial and data changes bind!</div>
+    <input [(ngModel)]="initialAndDataBind">
+    {{ initialAndDataBind }}
+    <hr>
 </div>

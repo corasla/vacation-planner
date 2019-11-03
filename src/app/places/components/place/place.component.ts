@@ -18,6 +18,9 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() country: string
   @Input() city: string
 
+  initialDataBindOnly = 'Synced only on initial component init'
+  initialAndDataBind = 'always in sync with my input and vice-versa!'
+
   constructor() { }
 
   ngOnInit() {
