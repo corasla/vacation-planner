@@ -23,6 +23,8 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() country: string
   @Input() city: string
   @Input() id: number
+  @Input() image: string
+  @Input() imageId: string
 
   @Output() requestDelete: EventEmitter<any> = new EventEmitter()
 

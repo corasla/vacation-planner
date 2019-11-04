@@ -1,60 +1,74 @@
-<div class="place">
-  <div class="tile">
-      <span class="label">
-        Name:
-      </span>
-      <span class="value">
-        {{ name }}
-      </span>
+<div class="place container">
+  <div class="card">
+    <div class="card-img-top">
+      <img [src]="image ? image : 'assets/' + imageId + '.png'" [alt]="description" class="img-fluid">
     </div>
-    <div class="tile">
-      <span class="label">
-        Description:
-      </span>
-      <span class="value">
-        {{ description }}
-      </span>
-    </div>
-    <div class="tile">
-      <span class="label">
-        Country:
-      </span>
-      <span class="value">
-        {{ country }}
-      </span>
-    </div>
-    <div class="tile">
-      <span class="label">
-        City:
-      </span>
-      <span class="value">
-        {{ city }}
-      </span>
-    </div>
-    <div class="footer">
-      <button (click)="clickedEdit($event)">Edit</button>
-      <button (click)="clickedRemove($event)">Remove</button>
-    </div>
-    <input
-      #inputElementRef
-      placeholder="place comps input"
-    >
-    <ng-content></ng-content>
-    <!--
-      <div class="footer">
-        <button
-          (click)="clickedEdit($event)"
-          (mouseover)="onMouseOver()"
-          (mouseout)="onMouseOut()"
-        >Edit</button>
-        <button (click)="clickedRemove($event)">Remove</button>
+    <div class="card-body">
+      <div class="tile">
+        <span class="label">
+          Name:
+        </span>
+        <span class="value">
+          {{ name }}
+        </span>
       </div>
-      <div>Initial data binded only!</div>
-      <input [ngModel]="initialDataBindOnly">
-      {{ initialDataBindOnly }}
-      <hr>
-      <div>Initial and data changes bind!</div>
-      <input [(ngModel)]="initialAndDataBind">
-      {{ initialAndDataBind }}
-    -->
+      <div class="tile">
+        <span class="label">
+          Description:
+        </span>
+        <span class="value">
+          {{ description }}
+        </span>
+      </div>
+      <div class="tile">
+        <span class="label">
+          Country:
+        </span>
+        <span class="value">
+          {{ country }}
+        </span>
+      </div>
+      <div class="tile">
+        <span class="label">
+          City:
+        </span>
+        <span class="value">
+          {{ city }}
+        </span>
+      </div>
+      <!-- <div class="row">
+        <div class="col-sm-5">
+          <input
+            class="form-control"
+            #inputElementRef
+            placeholder="place comps input"
+          >
+        </div>
+        <div class="col-sm-5 offset-sm-2">
+          <ng-content></ng-content>
+        </div>
+      </div> -->
+      <div class="footer">
+        <button class="btn btn-danger" (click)="clickedRemove($event)">Remove</button>
+        <button class="btn btn-primary" (click)="clickedEdit($event)">Edit</button>
+      </div>
+      <!--
+        <div class="footer">
+          <button
+            (click)="clickedEdit($event)"
+            (mouseover)="onMouseOver()"
+            (mouseout)="onMouseOut()"
+          >Edit</button>
+          <button (click)="clickedRemove($event)">Remove</button>
+        </div>
+        <div>Initial data binded only!</div>
+        <input [ngModel]="initialDataBindOnly">
+        {{ initialDataBindOnly }}
+        <hr>
+        <div>Initial and data changes bind!</div>
+        <input [(ngModel)]="initialAndDataBind">
+        {{ initialAndDataBind }}
+      -->
+    </div>
+  </div>
 </div>

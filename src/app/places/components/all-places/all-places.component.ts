@@ -14,6 +14,7 @@ export class AllPlacesComponent implements OnInit {
       description: 'Best place to go if you dislike winter',
       country: 'Portugal',
       city: 'Lisbon',
+      imageId: 'lisbon',
     }),
     new Place({
       id: 2,
@@ -21,6 +22,7 @@ export class AllPlacesComponent implements OnInit {
       description: 'Wining & Dining adventure',
       country: 'Italy',
       city: 'Rome',
+      imageId: 'rome',
     }),
     new Place({
       id: 3,
@@ -28,15 +30,17 @@ export class AllPlacesComponent implements OnInit {
       description: 'Romantic excursion',
       country: 'France',
       city: 'Paris',
+      image: 'https://www.smartertravel.com/uploads/2018/03/paris-shutterstock-1400x500.jpg',
     }),
   ]
   constructor() {
     const newPlace = new Place({
         id: this.places.length + 1,
-        name: 'School Of Magic',
-        description: 'Some awesome imaginary place!',
-        country: 'imagination land',
-        city: 'Hogwarts'
+        name: 'Barcelona adventure',
+        description: 'Great place to visit & feast on some Paella',
+        country: 'Spain',
+        city: 'Barcelona',
+        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2'
     })
 
     this.places.push(newPlace)
