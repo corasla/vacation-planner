@@ -4,18 +4,22 @@ import { AppComponent } from './app.component';
 import { AllPlacesComponent } from './places/components/all-places/all-places.component';
 import { PastVacationsComponent } from './places/components/past-vacations/past-vacations.component';
 import { UpcomingVacationsComponent } from './places/components/upcoming-vacations/upcoming-vacations.component';
+import { PlaceComponent } from './places/components/place/place.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule
       ],
       declarations: [
         AppComponent,
         AllPlacesComponent,
         PastVacationsComponent,
-        UpcomingVacationsComponent
+        UpcomingVacationsComponent,
+        PlaceComponent
       ],
     }).compileComponents();
   }));
