@@ -10,7 +10,9 @@
       [imageId]="place.imageId"
       (requestDelete)="deletePlace($event)"
     >
-    <input class="form-control" #allPlacesInputRef placeholder="parent input">
+    <mat-form-field>
+      <input class="form-control" matInput #allPlacesInputRef placeholder="parent">
+    </mat-form-field>
   </place>
   </div>
 </div>
