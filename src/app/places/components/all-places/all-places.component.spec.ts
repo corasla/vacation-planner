@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AllPlacesComponent } from './all-places.component';
+import { PlaceComponent } from '../place/place.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AllPlacesComponent', () => {
   let component: AllPlacesComponent;
@@ -8,7 +10,8 @@ describe('AllPlacesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AllPlacesComponent ]
+      imports: [ FormsModule ],
+      declarations: [ AllPlacesComponent, PlaceComponent ]
     })
     .compileComponents();
   }));
