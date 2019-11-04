@@ -6,9 +6,10 @@
       [country]="place.country"
       [city]="place.city"
       [id]="place.id"
+      [image]="place.image"
       (requestDelete)="deletePlace($event)"
     >
-    <input #allPlacesInputRef placeholder="parent input">
+    <input class="form-control" #allPlacesInputRef placeholder="parent input">
   </place>
   </div>
 </div>
