@@ -35,6 +35,11 @@
       <button (click)="clickedEdit($event)">Edit</button>
       <button (click)="clickedRemove($event)">Remove</button>
     </div>
+    <input
+      #inputElementRef
+      placeholder="place comps input"
+    >
+    <ng-content></ng-content>
     <!--
       <div class="footer">
         <button

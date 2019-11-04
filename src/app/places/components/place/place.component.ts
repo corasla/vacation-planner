@@ -6,7 +6,10 @@ import {
   OnDestroy,
   SimpleChanges,
   EventEmitter,
-  Output
+  Output,
+  ViewChild,
+  ElementRef,
+  ContentChild
 } from '@angular/core';
 
 @Component({
@@ -23,12 +26,17 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
 
   @Output() requestDelete: EventEmitter<any> = new EventEmitter()
 
+  @ViewChild('inputElementRef', {static: false}) inputElementReference: ElementRef
+  @ContentChild('allPlacesInputRef', {static: true}) inputElementFromParentComponent: ElementRef
+
   initialDataBindOnly = 'Synced only on initial component init'
   initialAndDataBind = 'always in sync with my input and vice-versa!'
 
   constructor() { }
 
   ngOnInit() {
+    console.warn('my input ref -> ', this.inputElementReference)
+    console.warn('my EXTERNAL input ref value -> ', this.inputElementFromParentComponent)
     console.log('inited comp Place -> ', this.name)
   }
 
@@ -37,12 +45,14 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   clickedRemove(event) {
-    console.log('user clicked remove', event)
+    // console.log('user clicked remove', event)
     this.requestDelete.emit(this.id)
   }
   
   clickedEdit(event) {
-    console.log('user clicked edit', event)
+    // console.log('user clicked edit', event)
+    console.log('my input ref value -> ', this.inputElementReference.nativeElement.value)
+    console.log('my EXTERNAL input ref value -> ', this.inputElementFromParentComponent.nativeElement.value)
   }
   
   ngOnDestroy() {
