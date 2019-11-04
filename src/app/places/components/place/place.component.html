@@ -1,7 +1,7 @@
 <div class="place container">
   <div class="card">
     <div class="card-img-top">
-      <img [src]="image" [alt]="description" class="img-fluid">
+      <img [src]="image ? image : 'assets/' + imageId + '.png'" [alt]="description" class="img-fluid">
     </div>
     <div class="card-body">
       <div class="tile">

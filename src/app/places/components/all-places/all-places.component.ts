@@ -14,7 +14,7 @@ export class AllPlacesComponent implements OnInit {
       description: 'Best place to go if you dislike winter',
       country: 'Portugal',
       city: 'Lisbon',
-      image: 'https://www.trafalgar.com/-/media/Project/Trafalgar/Product/hero-images/Wonders-of-Portugal-w.jpg?smartCrop=1&centreCrop=1&w=1000&h=600',
+      imageId: 'lisbon',
     }),
     new Place({
       id: 2,
@@ -22,7 +22,7 @@ export class AllPlacesComponent implements OnInit {
       description: 'Wining & Dining adventure',
       country: 'Italy',
       city: 'Rome',
-      image: 'https://images.unsplash.com/photo-1531572753322-ad063cecc140?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+      imageId: 'rome',
     }),
     new Place({
       id: 3,
