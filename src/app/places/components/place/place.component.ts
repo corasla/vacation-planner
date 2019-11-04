@@ -4,7 +4,9 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  SimpleChanges
+  SimpleChanges,
+  EventEmitter,
+  Output
 } from '@angular/core';
 
 @Component({
@@ -17,6 +19,9 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() description: string
   @Input() country: string
   @Input() city: string
+  @Input() id: number
+
+  @Output() requestDelete: EventEmitter<any> = new EventEmitter()
 
   initialDataBindOnly = 'Synced only on initial component init'
   initialAndDataBind = 'always in sync with my input and vice-versa!'
@@ -31,7 +36,24 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
     console.log('some changes -> ', changes)
   }
 
+  clickedRemove(event) {
+    console.log('user clicked remove', event)
+    this.requestDelete.emit(this.id)
+  }
+  
+  clickedEdit(event) {
+    console.log('user clicked edit', event)
+  }
+  
   ngOnDestroy() {
     console.log('destroying component Place -> ', this.name)
   }
+
+  // onMouseOver() {
+  //   console.log('over')
+  // }
+
+  // onMouseOut() {
+  //   console.log('out')
+  // }
 }

@@ -33,6 +33,10 @@ export class AllPlacesComponent implements OnInit {
     this.places.push(newPlace)
   }
 
+  deletePlace(id: number) {
+    console.info('going to delete -> ', id)
+  }
+
   ngOnInit() {
   }
 }

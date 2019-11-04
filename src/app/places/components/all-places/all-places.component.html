@@ -1,10 +1,12 @@
 <div class="general-container">
-  <div *ngFor="let place of places" class="place">
+  <div *ngFor="let place of places; let idx = index" class="place">
     <place
       [name]="place.name"
       [description]="place.description"
       [country]="place.country"
       [city]="place.city"
+      [id]="idx"
+      (requestDelete)="deletePlace($event)"
     ></place>
   </div>
 </div>
