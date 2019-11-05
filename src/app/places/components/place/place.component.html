@@ -36,21 +36,31 @@
           {{ city }}
         </span>
       </div>
-      <!-- <div class="row">
-        <div class="col-sm-5">
-          <input
-            class="form-control"
-            #inputElementRef
-            placeholder="place comps input"
-          >
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field>
+            <input
+              matInput
+              class="form-control"
+              #inputElementRef
+              placeholder="place comps input"
+            >
+          </mat-form-field>
         </div>
-        <div class="col-sm-5 offset-sm-2">
+        <div class="col-sm-12">
           <ng-content></ng-content>
         </div>
-      </div> -->
+      </div>
       <div class="footer">
-        <button class="btn btn-danger" (click)="clickedRemove($event)">Remove</button>
-        <button class="btn btn-primary" (click)="clickedEdit($event)">Edit</button>
+        <button
+          matTooltip="Remove this location from the list"
+          class="btn btn-danger"
+          (click)="clickedRemove($event)">Remove</button>
+        <button
+          matTooltip="Edit information about this location"
+          mat-raised-button
+          color="primary"
+          (click)="clickedEdit($event)">Edit</button>
       </div>
       <!--
         <div class="footer">

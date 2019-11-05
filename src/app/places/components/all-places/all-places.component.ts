@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 import { Place } from '../../models'
+import { ConfirmationModalComponent } from '../../../modals'
 
 @Component({
   selector: 'all-places',
@@ -7,6 +10,11 @@ import { Place } from '../../models'
   styleUrls: ['./all-places.component.sass']
 })
 export class AllPlacesComponent implements OnInit {
+  @ViewChild('secondDialog', {static:false}) secondDialog: TemplateRef<MatDialog>
+  pendingDeletionId = null
+  pendingDeletionPlaceName: string
+  dialog2Ref: MatDialogRef<any>
+
   places: Place[] = [
     new Place({
       id: 1,
@@ -33,7 +41,8 @@ export class AllPlacesComponent implements OnInit {
       image: 'https://www.smartertravel.com/uploads/2018/03/paris-shutterstock-1400x500.jpg',
     }),
   ]
-  constructor() {
+  
+  constructor(public dialog: MatDialog) {
     const newPlace = new Place({
         id: this.places.length + 1,
         name: 'Barcelona adventure',
@@ -48,6 +57,36 @@ export class AllPlacesComponent implements OnInit {
 
   deletePlace(id: number) {
     console.info('going to delete -> ', id)
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '300px',
+      data: {
+        id,
+        name: this.places.find(p => p.id === id).name,
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Confirmed removing -> ', result);
+    });
+
+    this.pendingDeletionId = id
+    this.pendingDeletionPlaceName = this.places.find(p => p.id === id).name,
+    this.dialog2Ref = this.dialog.open(this.secondDialog, {
+      width: '300px',
+    })
+  }
+
+
+  // second type of modal - template modal
+  onCancelDialog() {
+    this.dialog2Ref.close()
+    console.log('dialog was canceled')
+    this.pendingDeletionId = null
+  }
+
+  onConfirmDialog() {
+    this.dialog2Ref.close()
+    console.log(`going to delete ${this.pendingDeletionId}`)
   }
 
   ngOnInit() {

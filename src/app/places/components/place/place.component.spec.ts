@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlaceComponent } from './place.component';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatInputModule } from '@angular/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PlaceComponent', () => {
   let component: PlaceComponent;
@@ -9,7 +11,7 @@ describe('PlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule ],
       declarations: [ PlaceComponent ]
     })
     .compileComponents();

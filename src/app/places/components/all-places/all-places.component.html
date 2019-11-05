@@ -10,7 +10,21 @@
       [imageId]="place.imageId"
       (requestDelete)="deletePlace($event)"
     >
-    <input class="form-control" #allPlacesInputRef placeholder="parent input">
+    <mat-form-field>
+      <input class="form-control" matInput #allPlacesInputRef placeholder="parent">
+    </mat-form-field>
   </place>
   </div>
 </div>
+
+<!-- A second way of defining and using a modal - via templateRef -->
+<ng-template #secondDialog>
+  <h2 matDialogTitle>Modal #2 - This template dialog can also be used!</h2>
+  <div mat-dialog-content>
+    <p>Are you sure you want to remove {{ pendingDeletionPlaceName }} from this list?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="danger" (click)="onCancelDialog()">Cancel</button>
+    <button mat-button color="primary" (click)="onConfirmDialog()">Confirm</button>
+  </div>
+</ng-template>
