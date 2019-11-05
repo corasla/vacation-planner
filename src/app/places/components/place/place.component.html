@@ -9,7 +9,7 @@
           Name:
         </span>
         <span class="value">
-          {{ name }}
+          {{ name | uppercase }}
         </span>
       </div>
       <div class="tile">
@@ -17,7 +17,7 @@
           Description:
         </span>
         <span class="value">
-          {{ description }}
+          {{ description | lowercase }}
         </span>
       </div>
       <div class="tile">
@@ -25,7 +25,7 @@
           Country:
         </span>
         <span class="value">
-          {{ country }}
+          {{ country | titlecase }}
         </span>
       </div>
       <div class="tile">
@@ -33,7 +33,15 @@
           City:
         </span>
         <span class="value">
-          {{ city }}
+          {{ city | titlecase}}
+        </span>
+      </div>
+      <div class="tile">
+        <span class="label">
+          Average price:
+        </span>
+        <span class="value">
+          {{ averagePrice | currency:'EUR'}}
         </span>
       </div>
       <div class="row">

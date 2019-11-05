@@ -9,6 +9,7 @@
       [image]="place.image"
       [imageId]="place.imageId"
       (requestDelete)="deletePlace($event)"
+      [averagePrice]="place.averagePrice"
     >
     <mat-form-field>
       <input class="form-control" matInput #allPlacesInputRef placeholder="parent">
