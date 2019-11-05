@@ -52,8 +52,15 @@
         </div>
       </div>
       <div class="footer">
-        <button class="btn btn-danger" (click)="clickedRemove($event)">Remove</button>
-        <button mat-raised-button color="primary" (click)="clickedEdit($event)">Edit</button>
+        <button
+          matTooltip="Remove this location from the list"
+          class="btn btn-danger"
+          (click)="clickedRemove($event)">Remove</button>
+        <button
+          matTooltip="Edit information about this location"
+          mat-raised-button
+          color="primary"
+          (click)="clickedEdit($event)">Edit</button>
       </div>
       <!--
         <div class="footer">
