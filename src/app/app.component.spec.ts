@@ -7,6 +7,7 @@ import { UpcomingVacationsComponent } from './places/components/upcoming-vacatio
 import { PlaceComponent } from './places/components/place/place.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { CharCountPipe } from './pipes/char-count.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -23,7 +24,8 @@ describe('AppComponent', () => {
         AllPlacesComponent,
         PastVacationsComponent,
         UpcomingVacationsComponent,
-        PlaceComponent
+        PlaceComponent,
+        CharCountPipe
       ],
     }).compileComponents();
   }));

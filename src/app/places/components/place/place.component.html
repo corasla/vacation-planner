@@ -18,6 +18,12 @@
         </span>
         <span class="value">
           {{ description | lowercase }}
+          <div>
+            {{ description | charCount }}
+          </div>
+          <div>
+            {{ description | charCount:10 }}
+          </div>
         </span>
       </div>
       <div class="tile">

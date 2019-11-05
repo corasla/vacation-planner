@@ -14,6 +14,7 @@ import { UpcomingVacationsComponent } from './places/components/upcoming-vacatio
 import { PastVacationsComponent } from './places/components/past-vacations/past-vacations.component';
 import { PlaceComponent } from './places/components/place/place.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
+import { CharCountPipe } from './pipes/char-count.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfirmationModalComponent } from './modals/confirmation-modal/confirma
     UpcomingVacationsComponent,
     PastVacationsComponent,
     PlaceComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    CharCountPipe
   ],
   imports: [
     BrowserModule,

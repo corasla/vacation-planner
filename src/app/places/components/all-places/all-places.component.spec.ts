@@ -5,6 +5,7 @@ import { PlaceComponent } from '../place/place.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CharCountPipe } from 'src/app/pipes/char-count.pipe';
 
 describe('AllPlacesComponent', () => {
   let component: AllPlacesComponent;
@@ -13,7 +14,7 @@ describe('AllPlacesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule ],
-      declarations: [ AllPlacesComponent, PlaceComponent ]
+      declarations: [ AllPlacesComponent, PlaceComponent, CharCountPipe ]
     })
     .compileComponents();
   }));
