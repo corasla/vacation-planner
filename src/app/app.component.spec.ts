@@ -6,7 +6,7 @@ import { PastVacationsComponent } from './places/components/past-vacations/past-
 import { UpcomingVacationsComponent } from './places/components/upcoming-vacations/upcoming-vacations.component';
 import { PlaceComponent } from './places/components/place/place.component';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,7 +15,8 @@ describe('AppComponent', () => {
         RouterTestingModule,
         FormsModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule
       ],
       declarations: [
         AppComponent,

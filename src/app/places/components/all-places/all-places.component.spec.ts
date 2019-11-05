@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AllPlacesComponent } from './all-places.component';
 import { PlaceComponent } from '../place/place.component';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AllPlacesComponent', () => {
@@ -12,7 +12,7 @@ describe('AllPlacesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule ],
+      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule ],
       declarations: [ AllPlacesComponent, PlaceComponent ]
     })
     .compileComponents();
