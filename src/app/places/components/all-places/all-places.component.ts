@@ -23,6 +23,7 @@ export class AllPlacesComponent implements OnInit {
       country: 'Portugal',
       city: 'Lisbon',
       imageId: 'lisbon',
+      averagePrice: 2000,
     }),
     new Place({
       id: 2,
@@ -31,6 +32,7 @@ export class AllPlacesComponent implements OnInit {
       country: 'Italy',
       city: 'Rome',
       imageId: 'rome',
+      averagePrice: 2500,
     }),
     new Place({
       id: 3,
@@ -39,6 +41,7 @@ export class AllPlacesComponent implements OnInit {
       country: 'France',
       city: 'Paris',
       image: 'https://www.smartertravel.com/uploads/2018/03/paris-shutterstock-1400x500.jpg',
+      averagePrice: 3500,
     }),
   ]
   
@@ -49,7 +52,8 @@ export class AllPlacesComponent implements OnInit {
         description: 'Great place to visit & feast on some Paella',
         country: 'Spain',
         city: 'Barcelona',
-        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2'
+        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
+        averagePrice: 1800,
     })
 
     this.places.push(newPlace)

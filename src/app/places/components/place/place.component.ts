@@ -12,6 +12,8 @@ import {
   ContentChild
 } from '@angular/core';
 
+import { Subject } from 'rxjs'
+
 @Component({
   selector: 'place',
   templateUrl: './place.component.html',
@@ -25,6 +27,7 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() id: number
   @Input() image: string
   @Input() imageId: string
+  @Input() averagePrice: number
 
   @Output() requestDelete: EventEmitter<any> = new EventEmitter()
 
@@ -34,12 +37,18 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   initialDataBindOnly = 'Synced only on initial component init'
   initialAndDataBind = 'always in sync with my input and vice-versa!'
 
+  averagePriceObservable = new Subject<any>()
+
   constructor() { }
 
   ngOnInit() {
     console.warn('my input ref -> ', this.inputElementReference)
     console.warn('my EXTERNAL input ref value -> ', this.inputElementFromParentComponent)
     console.log('inited comp Place -> ', this.name)
+
+    setTimeout(() => {
+      this.averagePriceObservable.next(this.averagePrice - (Math.ceil(Math.random() * 190)))
+    }, Math.random() * 3200)
   }
 
   ngOnChanges(changes: SimpleChanges) {
