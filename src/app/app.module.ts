@@ -15,6 +15,7 @@ import { PastVacationsComponent } from './places/components/past-vacations/past-
 import { PlaceComponent } from './places/components/place/place.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 import { CharCountPipe } from './pipes/char-count.pipe';
+import { MyUnlessDirective } from './directives/my-unless.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CharCountPipe } from './pipes/char-count.pipe';
     PastVacationsComponent,
     PlaceComponent,
     ConfirmationModalComponent,
-    CharCountPipe
+    CharCountPipe,
+    MyUnlessDirective
   ],
   imports: [
     BrowserModule,

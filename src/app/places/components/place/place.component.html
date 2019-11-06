@@ -64,6 +64,11 @@
             <span class="value red">
               -{{ (averagePrice - yourPrice) | currency:'EUR'}}
             </span>
+            <ng-container *myUnless="averagePrice - yourPrice > 50">
+              <span class="label" [ngStyle]="{color:'#f00'}">
+                Jackpot!! Great savings!
+              </span>
+            </ng-container>
         </ng-container>
         <ng-template #loading>
           <span class="value">Loading...</span>

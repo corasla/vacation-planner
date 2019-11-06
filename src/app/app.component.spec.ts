@@ -8,6 +8,7 @@ import { PlaceComponent } from './places/components/place/place.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { CharCountPipe } from './pipes/char-count.pipe';
+import { MyUnlessDirective } from 'src/app/directives/my-unless.directive'
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,7 +26,8 @@ describe('AppComponent', () => {
         PastVacationsComponent,
         UpcomingVacationsComponent,
         PlaceComponent,
-        CharCountPipe
+        CharCountPipe,
+        MyUnlessDirective
       ],
     }).compileComponents();
   }));
