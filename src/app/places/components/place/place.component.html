@@ -50,6 +50,25 @@
           {{ averagePrice | currency:'EUR'}}
         </span>
       </div>
+      <div class="tile">
+        <span class="label">
+          Your price:
+        </span>
+        <ng-container *ngIf="averagePriceObservable | async as yourPrice; else loading">
+          <span class="value">
+              {{ yourPrice | currency:'EUR'}}
+            </span>
+            <span class="label">
+              Discount:
+            </span>
+            <span class="value red">
+              -{{ (averagePrice - yourPrice) | currency:'EUR'}}
+            </span>
+        </ng-container>
+        <ng-template #loading>
+          <span class="value">Loading...</span>
+        </ng-template>
+      </div>
       <div class="row">
         <div class="col-sm-12">
           <mat-form-field>
