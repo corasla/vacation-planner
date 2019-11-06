@@ -1,21 +1,25 @@
 <div class="general-container">
-  <div *ngFor="let place of places" class="place">
-    <place
-      [name]="place.name"
-      [description]="place.description"
-      [country]="place.country"
-      [city]="place.city"
-      [id]="place.id"
-      [image]="place.image"
-      [imageId]="place.imageId"
-      (requestDelete)="deletePlace($event)"
-      [averagePrice]="place.averagePrice"
-    >
-    <mat-form-field>
-      <input class="form-control" matInput #allPlacesInputRef placeholder="parent">
-    </mat-form-field>
-  </place>
-  </div>
+  <!-- Desugared ngFor syntax! -->
+  <ng-template ngFor [ngForOf]="places" let-place>
+    <!-- <div *ngFor="let place of places" class="place"> -->
+    <div class="place">
+      <place
+        [name]="place.name"
+        [description]="place.description"
+        [country]="place.country"
+        [city]="place.city"
+        [id]="place.id"
+        [image]="place.image"
+        [imageId]="place.imageId"
+        (requestDelete)="deletePlace($event)"
+        [averagePrice]="place.averagePrice"
+      >
+      <mat-form-field>
+        <input class="form-control" matInput #allPlacesInputRef placeholder="parent">
+      </mat-form-field>
+    </place>
+    </div>
+  </ng-template>
 </div>
 
 <!-- A second way of defining and using a modal - via templateRef -->
