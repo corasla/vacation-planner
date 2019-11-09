@@ -74,22 +74,7 @@
           <span class="value">Loading...</span>
         </ng-template>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-form-field>
-            <input
-              matInput
-              class="form-control"
-              #inputElementRef
-              placeholder="place comps input"
-            >
-          </mat-form-field>
-        </div>
-        <div class="col-sm-12">
-          <ng-content></ng-content>
-        </div>
-      </div>
-      <div class="footer">
+      <div class="footer" *ngIf="!hideFooter">
         <button
           matTooltip="Remove this location from the list"
           class="btn btn-danger"
@@ -100,23 +85,10 @@
           color="primary"
           (click)="clickedEdit($event)">Edit</button>
       </div>
-      <!--
-        <div class="footer">
-          <button
-            (click)="clickedEdit($event)"
-            (mouseover)="onMouseOver()"
-            (mouseout)="onMouseOut()"
-          >Edit</button>
-          <button (click)="clickedRemove($event)">Remove</button>
-        </div>
-        <div>Initial data binded only!</div>
-        <input [ngModel]="initialDataBindOnly">
-        {{ initialDataBindOnly }}
-        <hr>
-        <div>Initial and data changes bind!</div>
-        <input [(ngModel)]="initialAndDataBind">
-        {{ initialAndDataBind }}
-      -->
+      <hr>
+      <div class="footer extra-actions">
+        <ng-content></ng-content>
+      </div>
     </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { AllPlacesComponent } from './places/components/all-places/all-places.component';
-import { PastVacationsComponent } from './places/components/past-vacations/past-vacations.component';
-import { UpcomingVacationsComponent } from './places/components/upcoming-vacations/upcoming-vacations.component';
+import { AllPlacesComponent } from './places/pages/all-places/all-places.component';
+import { PastVacationsComponent } from './places/pages/past-vacations/past-vacations.component';
+import { UpcomingVacationsComponent } from './places/pages/upcoming-vacations/upcoming-vacations.component';
 import { PlaceComponent } from './places/components/place/place.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';

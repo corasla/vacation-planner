@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/c
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Place } from '../../models'
-import { ConfirmationModalComponent } from '../../../modals'
 import { PlaceService } from '../../services/place.service';
 import { Subscription } from 'rxjs';
 
@@ -31,18 +30,6 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
         this.places = allPlacesArr
       })
     )
-
-    setTimeout(() => {
-      const newPlace = new Place({
-        name: 'Barcelona adventure',
-        description: 'Great place to visit & feast on some Paella',
-        country: 'Spain',
-        city: 'Barcelona',
-        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
-        averagePrice: 1800,
-      })
-      this.placeService.addNewPlace(newPlace)
-    }, 500)
   }
 
   deletePlace(id: number) {
@@ -64,6 +51,10 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
     // this.places = [...this.places.filter(p => p.id !== this.pendingDeletionId)]
     this.placeService.deletePlace(this.pendingDeletionId)
     this.dialog2Ref.close()
+  }
+
+  markPlaceAsUpcoming(place) {
+    this.placeService.markAsGoingToVisit(place)
   }
 
   ngOnInit() {

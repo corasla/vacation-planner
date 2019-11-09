@@ -8,6 +8,8 @@ export interface IPlace {
   imageId?: string // name of image inside the assets forlder
   countryCode?: string
   averagePrice?: number
+  markedForVisit?: boolean
+  markedAsVisited?: boolean
 }
 
 export class Place implements IPlace{
@@ -20,6 +22,8 @@ export class Place implements IPlace{
   imageId: string
   countryCode: string
   averagePrice: number
+  markedForVisit: boolean
+  markedAsVisited: boolean
 
   constructor(data: IPlace) {
     const {
