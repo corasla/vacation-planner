@@ -13,6 +13,18 @@ export interface IPlace {
 }
 
 export class Place implements IPlace{
+  static createEmptyPlace() {
+    return new Place({
+      name: '',
+      country: '',
+      countryCode: '',
+      city: '',
+      description: '',
+      image: '',
+      imageId: '',
+      averagePrice: 3.5
+    })
+  }
   id?: number
   name: string
   description: string

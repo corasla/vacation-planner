@@ -1,8 +1,6 @@
 <edit-place-form
   *ngIf="selectedPlace; else loading"
   [place]="selectedPlace"
-  (save)="onClickSave($event)"
-  (cancel)="onClickCancel()"
 ></edit-place-form>
   
 <ng-template #loading>

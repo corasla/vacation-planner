@@ -35,16 +35,6 @@ export class EditPlaceComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  onClickSave(place: Place) {
-    // save
-    this.placeService.update(place)
-    this.router.navigate(['..'], {relativeTo: this.activatedRoute})
-  }
-
-  onClickCancel() {
-    this.router.navigate(['..'], {relativeTo: this.activatedRoute})
-  }
-
   ngOnDestroy() {
     this.placeService.inEditMode = false
     this._subscriptions.forEach(sub => sub.unsubscribe())
