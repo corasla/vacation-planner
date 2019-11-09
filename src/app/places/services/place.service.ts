@@ -67,6 +67,9 @@ export class PlaceService {
   }
 
   markAsGoingToVisit(place: Place) {
+    if (place.markedForVisit || place.markedAsVisited) {
+      return
+    }
     place.markedForVisit = true
     this.update(place)
   }
