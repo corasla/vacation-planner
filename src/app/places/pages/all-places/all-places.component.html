@@ -11,10 +11,14 @@
         [id]="place.id"
         [image]="place.image"
         [imageId]="place.imageId"
-        (requestDelete)="deletePlace($event)"
         [averagePrice]="place.averagePrice"
+        [previewMode]="placeService.inEditMode"
+        (requestDelete)="deletePlace($event)"
+        (requestViewDetails)="onRequestViewDetails($event)"
+        [hideFooter]="!(authService.user$ | async).isAuthenticated"
       >
       <button 
+        *ngIf="(authService.user$ | async).isAuthenticated"
         class="btn btn-primary"
         (click)='markPlaceAsUpcoming(place)'
         [ngClass]="{'disabled': place.markedAsVisited || place.markedForVisit}"

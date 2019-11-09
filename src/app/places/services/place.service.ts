@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs'
 export class PlaceService {
   allPlaces$: BehaviorSubject<Place[]>
   lastIdUsed = 2
+  inEditMode = false
 
   allPlacesData: Array<Place> = [
     new Place({
@@ -66,6 +67,9 @@ export class PlaceService {
   }
 
   markAsGoingToVisit(place: Place) {
+    if (place.markedForVisit || place.markedAsVisited) {
+      return
+    }
     place.markedForVisit = true
     this.update(place)
   }

@@ -10,7 +10,7 @@ import {
 })
 export class MyUnlessDirective {
   @Input() set myUnless(condition: boolean) {
-    if (condition && !this.hasView) {
+    if (!condition && !this.hasView) {
       this.viewContainer.createEmbeddedView(this.templateRef)
       this.hasView = true
     } else if (condition && this.hasView) {

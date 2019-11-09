@@ -26,8 +26,10 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() imageId: string
   @Input() averagePrice: number
   @Input() hideFooter: boolean = false
+  @Input() previewMode: boolean = false
 
   @Output() requestDelete: EventEmitter<any> = new EventEmitter()
+  @Output() requestViewDetails: EventEmitter<any> = new EventEmitter()
 
   initialDataBindOnly = 'Synced only on initial component init'
   initialAndDataBind = 'always in sync with my input and vice-versa!'
@@ -37,25 +39,22 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    console.log('inited comp Place -> ', this.name)
-
     setTimeout(() => {
       this.averagePriceObservable.next(this.averagePrice - (Math.ceil(Math.random() * 190)))
     }, Math.random() * 3200)
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('some changes -> ', changes)
   }
 
   clickedRemove(event) {
     this.requestDelete.emit(this.id)
   }
   
-  clickedEdit(event) {
+  clickedViewDetails(event) {
+    this.requestViewDetails.emit(this.id)
   }
   
   ngOnDestroy() {
-    console.log('destroying component Place -> ', this.name)
   }
 }

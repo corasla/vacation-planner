@@ -1,0 +1,29 @@
+<ng-container *ngIf="selectedPlace; else loading">
+    <place
+        [name]="selectedPlace.name"
+        [description]="selectedPlace.description"
+        [country]="selectedPlace.country"
+        [city]="selectedPlace.city"
+        [id]="selectedPlace.id"
+        [image]="selectedPlace.image"
+        [imageId]="selectedPlace.imageId"
+        [averagePrice]="selectedPlace.averagePrice"
+        (requestDelete)="deletePlace($event)"
+        (requestViewDetails)="onRequestViewDetails($event)"
+        [hideFooter]="true"
+      >
+    </place>
+
+    <button 
+      class="btn btn-primary"
+      (click)='onClickCancel()'
+    >Cancel</button>
+    <button 
+      class="btn btn-primary"
+      (click)='onClickSave()'
+    >Save</button>
+  </ng-container>
+  
+  <ng-template #loading>
+    Loading data...
+  </ng-template>

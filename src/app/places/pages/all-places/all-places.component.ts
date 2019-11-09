@@ -1,9 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router'
 
 import { Place } from '../../models'
 import { PlaceService } from '../../services/place.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'all-places',
@@ -22,13 +24,15 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
   
   constructor(
     public dialog: MatDialog,
-    private placeService: PlaceService
+    public placeService: PlaceService,
+    private router: Router,
+    public authService: AuthService
   ) {
     // this.places = this.placeService.getPlaces()
     this._subscriptions.push(
       this.placeService.allPlaces$.subscribe((allPlacesArr: Place[]) => {
         this.places = allPlacesArr
-      })
+      }),
     )
   }
 
@@ -38,6 +42,10 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
     this.dialog2Ref = this.dialog.open(this.templateDeleteModal, {
       width: '300px',
     })
+  }
+
+  onRequestViewDetails(id : number) {
+    this.router.navigate(['/place/' + id])
   }
 
   // second type of modal - template modal
