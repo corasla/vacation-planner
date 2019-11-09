@@ -5,6 +5,7 @@ import { Router } from '@angular/router'
 import { Place } from '../../models'
 import { PlaceService } from '../../services/place.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'all-places',
@@ -25,6 +26,7 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public placeService: PlaceService,
     private router: Router,
+    public authService: AuthService
   ) {
     // this.places = this.placeService.getPlaces()
     this._subscriptions.push(

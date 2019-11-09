@@ -1,7 +1,13 @@
-<nav class="nav nav-pills">
-  <a class="nav-link" routerLinkActive="active" routerLink="/all">All Places</a>
-  <a class="nav-link" routerLinkActive="active" routerLink="/upcoming">Upcoming Vacations</a>
-  <a class="nav-link" routerLinkActive="active" routerLink="/past">Past Vacations</a>
-</nav>
+<div class="nav-and-buttons">
+  <nav class="nav nav-pills">
+    <a class="nav-link" routerLinkActive="active" routerLink="/all">All Places</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="/upcoming" *ngIf="(authService.user$ | async).isAuthenticated">Upcoming Vacations</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="/past" *ngIf="(authService.user$ | async).isAuthenticated">Past Vacations</a>
+  </nav>
+  <div class="auth-button">
+    <div class="nav-link button btn btn-primary" (click)="onClickLogin()" *ngIf="!(authService.user$ | async).isAuthenticated">Login</div>
+    <div class="nav-link button btn btn-primary" (click)="onClickLogout()" *ngIf="(authService.user$ | async).isAuthenticated">Logout</div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

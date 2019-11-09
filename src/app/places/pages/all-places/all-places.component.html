@@ -15,8 +15,10 @@
         [previewMode]="placeService.inEditMode"
         (requestDelete)="deletePlace($event)"
         (requestViewDetails)="onRequestViewDetails($event)"
+        [hideFooter]="!(authService.user$ | async).isAuthenticated"
       >
       <button 
+        *ngIf="(authService.user$ | async).isAuthenticated"
         class="btn btn-primary"
         (click)='markPlaceAsUpcoming(place)'
         [ngClass]="{'disabled': place.markedAsVisited || place.markedForVisit}"

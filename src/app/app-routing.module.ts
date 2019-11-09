@@ -5,6 +5,7 @@ import { UpcomingVacationsComponent } from './places/pages/upcoming-vacations/up
 import { PastVacationsComponent } from './places/pages/past-vacations/past-vacations.component';
 import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   { 
@@ -14,6 +15,7 @@ const routes: Routes = [
   },
   { path: 'all', component: AllPlacesComponent},
   { path: 'place',
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -29,8 +31,8 @@ const routes: Routes = [
         component: EditPlaceComponent
       },
   ]},
-  { path: 'upcoming', component: UpcomingVacationsComponent },
-  { path: 'past', component: PastVacationsComponent },
+  { path: 'upcoming', component: UpcomingVacationsComponent, canActivate: [AuthGuard] },
+  { path: 'past', component: PastVacationsComponent, canActivate: [AuthGuard] },
   { 
     path: '**',
     redirectTo: '/all',
