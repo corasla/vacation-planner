@@ -31,17 +31,19 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
         this.places = allPlacesArr
       })
     )
-    const newPlace = new Place({
-      id: this.places.length + 1,
-      name: 'Barcelona adventure',
-      description: 'Great place to visit & feast on some Paella',
-      country: 'Spain',
-      city: 'Barcelona',
-      image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
-      averagePrice: 1800,
-    })
 
-    this.placeService.addNewPlace(newPlace)
+    setTimeout(() => {
+      const newPlace = new Place({
+        id: this.places.length + 1,
+        name: 'Barcelona adventure',
+        description: 'Great place to visit & feast on some Paella',
+        country: 'Spain',
+        city: 'Barcelona',
+        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
+        averagePrice: 1800,
+      })
+      this.placeService.addNewPlace(newPlace)
+    }, 5000)
   }
 
   deletePlace(id: number) {

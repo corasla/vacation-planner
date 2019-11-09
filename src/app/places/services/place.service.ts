@@ -38,7 +38,9 @@ export class PlaceService {
       averagePrice: 3500,
     }),
   ]
-  constructor() { }
+  constructor() {
+    this.allPlaces$.next(this.allPlacesData)
+  }
 
   addNewPlace(place: Place) {
     this.allPlacesData = [...this.allPlacesData, place]
