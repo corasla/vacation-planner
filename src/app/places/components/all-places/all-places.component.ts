@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Place } from '../../models'
 import { ConfirmationModalComponent } from '../../../modals'
+import { PlaceService } from '../../services/place.service';
 
 @Component({
   selector: 'all-places',
@@ -15,45 +16,22 @@ export class AllPlacesComponent implements OnInit {
   pendingDeletionPlaceName: string
   dialog2Ref: MatDialogRef<any>
 
-  places: Place[] = [
-    new Place({
-      id: 1,
-      name: 'Portugal vacation',
-      description: 'Best place to go if you dislike winter',
-      country: 'Portugal',
-      city: 'Lisbon',
-      imageId: 'lisbon',
-      averagePrice: 2000,
-    }),
-    new Place({
-      id: 2,
-      name: 'Beautiful Rome',
-      description: 'Wining & Dining adventure',
-      country: 'Italy',
-      city: 'Rome',
-      imageId: 'rome',
-      averagePrice: 2500,
-    }),
-    new Place({
-      id: 3,
-      name: 'Senna Boat trip in France',
-      description: 'Romantic excursion',
-      country: 'France',
-      city: 'Paris',
-      image: 'https://www.smartertravel.com/uploads/2018/03/paris-shutterstock-1400x500.jpg',
-      averagePrice: 3500,
-    }),
-  ]
+  places: Place[] = []
   
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    private placeService: PlaceService
+  ) {
+    this.places = this.placeService.getPlaces()
+    
     const newPlace = new Place({
-        id: this.places.length + 1,
-        name: 'Barcelona adventure',
-        description: 'Great place to visit & feast on some Paella',
-        country: 'Spain',
-        city: 'Barcelona',
-        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
-        averagePrice: 1800,
+      id: this.places.length + 1,
+      name: 'Barcelona adventure',
+      description: 'Great place to visit & feast on some Paella',
+      country: 'Spain',
+      city: 'Barcelona',
+      image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
+      averagePrice: 1800,
     })
 
     this.places.push(newPlace)
