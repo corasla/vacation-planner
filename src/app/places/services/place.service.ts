@@ -11,7 +11,7 @@ export class PlaceService {
 
   allPlacesData: Array<Place> = [
     new Place({
-      id: 1,
+      id: 0,
       name: 'Portugal vacation',
       description: 'Best place to go if you dislike winter',
       country: 'Portugal',
@@ -20,7 +20,7 @@ export class PlaceService {
       averagePrice: 2000,
     }),
     new Place({
-      id: 2,
+      id: 1,
       name: 'Beautiful Rome',
       description: 'Wining & Dining adventure',
       country: 'Italy',
@@ -29,7 +29,7 @@ export class PlaceService {
       averagePrice: 2500,
     }),
     new Place({
-      id: 3,
+      id: 2,
       name: 'Senna Boat trip in France',
       description: 'Romantic excursion',
       country: 'France',
@@ -43,7 +43,12 @@ export class PlaceService {
   }
 
   addNewPlace(place: Place) {
-    this.allPlacesData = [...this.allPlacesData, place]
+    this.allPlacesData = [...this.allPlacesData, {...place, id: this.allPlacesData.length}]
+    this.allPlaces$.next(this.allPlacesData)
+  }
+
+  deletePlace(placeId: number) {
+    this.allPlacesData = [...this.allPlacesData.filter(p => p.id !== placeId)]
     this.allPlaces$.next(this.allPlacesData)
   }
 }

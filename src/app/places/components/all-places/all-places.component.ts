@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./all-places.component.sass']
 })
 export class AllPlacesComponent implements OnInit, OnDestroy {
-  @ViewChild('secondDialog', {static:false}) secondDialog: TemplateRef<MatDialog>
+  @ViewChild('templateDeleteModal', {static:false}) templateDeleteModal: TemplateRef<MatDialog>
   pendingDeletionId = null
   pendingDeletionPlaceName: string
   dialog2Ref: MatDialogRef<any>
@@ -34,7 +34,6 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       const newPlace = new Place({
-        id: this.places.length + 1,
         name: 'Barcelona adventure',
         description: 'Great place to visit & feast on some Paella',
         country: 'Spain',
@@ -43,41 +42,28 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
         averagePrice: 1800,
       })
       this.placeService.addNewPlace(newPlace)
-    }, 2000)
+    }, 500)
   }
 
   deletePlace(id: number) {
-    console.info('going to delete -> ', id)
-    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-      width: '300px',
-      data: {
-        id,
-        name: this.places.find(p => p.id === id).name,
-      }
-    })
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Confirmed removing -> ', result);
-    });
-
     this.pendingDeletionId = id
     this.pendingDeletionPlaceName = this.places.find(p => p.id === id).name,
-    this.dialog2Ref = this.dialog.open(this.secondDialog, {
+    this.dialog2Ref = this.dialog.open(this.templateDeleteModal, {
       width: '300px',
     })
   }
-
 
   // second type of modal - template modal
   onCancelDialog() {
     this.dialog2Ref.close()
-    console.log('dialog was canceled')
     this.pendingDeletionId = null
   }
 
   onConfirmDialog() {
+    // this may be useful when doing some request in the background but wanting immediate visual change
+    // this.places = [...this.places.filter(p => p.id !== this.pendingDeletionId)]
+    this.placeService.deletePlace(this.pendingDeletionId)
     this.dialog2Ref.close()
-    console.log(`going to delete ${this.pendingDeletionId}`)
   }
 
   ngOnInit() {
