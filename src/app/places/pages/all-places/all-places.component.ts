@@ -65,6 +65,10 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
     this.dialog2Ref.close()
   }
 
+  markPlaceAsUpcoming(place) {
+    this.placeService.markAsGoingToVisit(place)
+  }
+
   ngOnInit() {
   }
 

@@ -61,6 +61,7 @@ export class PlaceService {
 
   update(place: Place) {
     const placeId = this.allPlacesData.findIndex(p => p.id === place.id)
-    this.allPlacesData = this.allPlacesData.splice(placeId, 1, place)
+    this.allPlacesData.splice(placeId, 1, place)
+    this.allPlaces$.next(this.allPlacesData)
   }
 }

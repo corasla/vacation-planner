@@ -15,13 +15,14 @@ export class PastPlacesService {
   ) {
     this.allPlaces$ = this.placeService.allPlaces$.pipe(
       map(places => {
-        return places.filter(place => place.markedForVisit === true)
+        return places.filter(place => place.markedAsVisited === true)
       })
     )
   }
 
   removeFromVisited(place: Place) {
-    place.markAsVisited = false
+    place.markedAsVisited = false
+    place.markedForVisit = true
     this.placeService.update(place)
   }
 }

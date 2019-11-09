@@ -9,7 +9,7 @@ export interface IPlace {
   countryCode?: string
   averagePrice?: number
   markedForVisit?: boolean
-  markAsVisited?: boolean
+  markedAsVisited?: boolean
 }
 
 export class Place implements IPlace{
@@ -23,7 +23,7 @@ export class Place implements IPlace{
   countryCode: string
   averagePrice: number
   markedForVisit: boolean
-  markAsVisited: boolean
+  markedAsVisited: boolean
 
   constructor(data: IPlace) {
     const {

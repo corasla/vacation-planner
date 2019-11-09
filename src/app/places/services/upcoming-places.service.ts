@@ -15,19 +15,20 @@ export class UpcomingPlacesService {
   ) {
     this.allPlaces$ = this.placeService.allPlaces$.pipe(
       map(places => {
-        return places.filter(place => place.markAsVisited === true)
+        return places.filter(place => place.markedForVisit === true)
       })
     )
   }
 
-  markAsVisited(place: Place) {
-    place.markAsVisited = true
+  markedAsVisited(place: Place) {
+    place.markedAsVisited = true
+    place.markedForVisit = false
     this.placeService.update(place)
   }
 
   removeFromUpcoming(place: Place) {
     place.markedForVisit = false
-    place.markAsVisited = false
+    place.markedAsVisited = false
     this.placeService.update(place)
   }
 }

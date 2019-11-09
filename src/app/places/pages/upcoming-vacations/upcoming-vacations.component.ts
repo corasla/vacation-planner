@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UpcomingPlacesService } from '../../services/upcoming-places.service';
 
 import { Place } from 'src/app/places/models'
-import { PastPlacesService } from '../../services/past-places.service';
 
 @Component({
   selector: 'upcoming-vacations',
@@ -13,7 +12,6 @@ export class UpcomingVacationsComponent implements OnInit {
   places: Place[] = []
   constructor(
     private upcomingPlacesService: UpcomingPlacesService,
-    private pastPlacesService: PastPlacesService
   ) {
     this.upcomingPlacesService.allPlaces$.subscribe((places: Place[]) => {
       this.places = places
@@ -25,7 +23,7 @@ export class UpcomingVacationsComponent implements OnInit {
   }
 
   markPlaceAsVisited(place: Place) {
-    this.upcomingPlacesService.markAsVisited(place)
+    this.upcomingPlacesService.markedAsVisited(place)
   }
 
   ngOnInit() {

@@ -74,21 +74,6 @@
           <span class="value">Loading...</span>
         </ng-template>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-form-field>
-            <input
-              matInput
-              class="form-control"
-              #inputElementRef
-              placeholder="place comps input"
-            >
-          </mat-form-field>
-        </div>
-        <div class="col-sm-12">
-          <ng-content></ng-content>
-        </div>
-      </div>
       <div class="footer">
         <button
           matTooltip="Remove this location from the list"
@@ -99,6 +84,10 @@
           mat-raised-button
           color="primary"
           (click)="clickedEdit($event)">Edit</button>
+      </div>
+      <hr>
+      <div class="footer extra-actions">
+        <ng-content></ng-content>
       </div>
     </div>
   </div>

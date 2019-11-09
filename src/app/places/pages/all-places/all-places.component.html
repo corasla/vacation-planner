@@ -14,9 +14,14 @@
         (requestDelete)="deletePlace($event)"
         [averagePrice]="place.averagePrice"
       >
-      <mat-form-field>
+      <button 
+        class="btn btn-primary"
+        (click)='markPlaceAsUpcoming(place)'
+        [ngClass]="{'disabled': place.markedAsVisited || place.markedForVisit}"
+      >Send to upcoming!</button>
+      <!-- <mat-form-field>
         <input class="form-control" matInput #allPlacesInputRef placeholder="parent">
-      </mat-form-field>
+      </mat-form-field> -->
     </place>
     </div>
   </ng-template>
