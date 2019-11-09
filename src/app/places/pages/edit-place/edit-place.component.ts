@@ -36,10 +36,12 @@ export class EditPlaceComponent implements OnInit, OnDestroy {
   }
 
   onClickSave() {
+    // save
+    this.router.navigate(['..'], {relativeTo: this.activatedRoute})
   }
 
   onClickCancel() {
-    
+    this.router.navigate(['..'], {relativeTo: this.activatedRoute})
   }
 
   ngOnDestroy() {
