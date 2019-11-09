@@ -35,8 +35,9 @@ export class EditPlaceComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  onClickSave() {
+  onClickSave(place: Place) {
     // save
+    this.placeService.update(place)
     this.router.navigate(['..'], {relativeTo: this.activatedRoute})
   }
 

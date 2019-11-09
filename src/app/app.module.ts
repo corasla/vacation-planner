@@ -18,6 +18,7 @@ import { CharCountPipe } from './pipes/char-count.pipe';
 import { MyUnlessDirective } from './directives/my-unless.directive';
 import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
+import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EditPlaceComponent } from './places/pages/edit-place/edit-place.compone
     CharCountPipe,
     MyUnlessDirective,
     ViewPlaceComponent,
-    EditPlaceComponent
+    EditPlaceComponent,
+    EditPlaceFormComponent
   ],
   imports: [
     BrowserModule,
