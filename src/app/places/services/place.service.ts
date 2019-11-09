@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs'
 })
 export class PlaceService {
   allPlaces$: BehaviorSubject<Place[]>
+  lastIdUsed = 2
 
   allPlacesData: Array<Place> = [
     new Place({
@@ -43,7 +44,8 @@ export class PlaceService {
   }
 
   addNewPlace(place: Place) {
-    this.allPlacesData = [...this.allPlacesData, {...place, id: this.allPlacesData.length}]
+    this.lastIdUsed++
+    this.allPlacesData = [...this.allPlacesData, {...place, id: this.lastIdUsed}]
     this.allPlaces$.next(this.allPlacesData)
   }
 
