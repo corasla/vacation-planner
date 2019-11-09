@@ -43,7 +43,7 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
         averagePrice: 1800,
       })
       this.placeService.addNewPlace(newPlace)
-    }, 5000)
+    }, 2000)
   }
 
   deletePlace(id: number) {

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models';
 
-import { Subject } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaceService {
-  allPlaces$: Subject<Place[]> = new Subject()
+  allPlaces$: BehaviorSubject<Place[]>
 
   allPlacesData: Array<Place> = [
     new Place({
@@ -39,7 +39,7 @@ export class PlaceService {
     }),
   ]
   constructor() {
-    this.allPlaces$.next(this.allPlacesData)
+    this.allPlaces$ = new BehaviorSubject(this.allPlacesData)
   }
 
   addNewPlace(place: Place) {
