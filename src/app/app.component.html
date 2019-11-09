@@ -5,8 +5,9 @@
     <a class="nav-link" routerLinkActive="active" routerLink="/past" *ngIf="(authService.user$ | async).isAuthenticated">Past Vacations</a>
   </nav>
   <div class="auth-button">
-    <div class="nav-link button btn btn-primary" (click)="onClickLogin()" *ngIf="!(authService.user$ | async).isAuthenticated">Login</div>
-    <div class="nav-link button btn btn-primary" (click)="onClickLogout()" *ngIf="(authService.user$ | async).isAuthenticated">Logout</div>
+    <button class="button btn btn-warning" routerLink="/place/create" *ngIf="(authService.user$ | async).isAuthenticated">+Add Place</button>
+    <button class="button btn btn-primary" (click)="onClickLogin()" *ngIf="!(authService.user$ | async).isAuthenticated">Login</button>
+    <button class="button btn btn-primary" (click)="onClickLogout()" *ngIf="(authService.user$ | async).isAuthenticated">Logout</button>
   </div>
 </div>
 

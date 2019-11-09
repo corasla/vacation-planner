@@ -6,6 +6,7 @@ import { PastVacationsComponent } from './places/pages/past-vacations/past-vacat
 import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
 import { AuthGuard } from './guards/auth-guard.guard';
+import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
 
 const routes: Routes = [
   { 
@@ -23,12 +24,17 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'create',
+        pathMatch: 'full',
+        component: EditPlaceFormComponent
+      },
+      {
         path: ':id',
-        component: ViewPlaceComponent
+        component: ViewPlaceComponent,
       },
       {
         path: ':id/edit',
-        component: EditPlaceComponent
+        component: EditPlaceComponent,
       },
   ]},
   { path: 'upcoming', component: UpcomingVacationsComponent, canActivate: [AuthGuard] },
