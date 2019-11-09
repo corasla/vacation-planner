@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AllPlacesComponent } from './places/components/all-places/all-places.component';
-import { UpcomingVacationsComponent } from './places/components/upcoming-vacations/upcoming-vacations.component';
-import { PastVacationsComponent } from './places/components/past-vacations/past-vacations.component';
+import { AllPlacesComponent } from './places/pages/all-places/all-places.component';
+import { UpcomingVacationsComponent } from './places/pages/upcoming-vacations/upcoming-vacations.component';
+import { PastVacationsComponent } from './places/pages/past-vacations/past-vacations.component';
 
 const routes: Routes = [
   { path: 'all', component: AllPlacesComponent },

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AllPlacesComponent } from './all-places.component';
-import { PlaceComponent } from '../place/place.component';
+import { PlaceComponent } from 'src/app/places/components/place/place.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';

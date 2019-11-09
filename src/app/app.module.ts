@@ -9,9 +9,9 @@ import { MatDialogRef } from '@angular/material/dialog'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AllPlacesComponent } from './places/components/all-places/all-places.component';
-import { UpcomingVacationsComponent } from './places/components/upcoming-vacations/upcoming-vacations.component';
-import { PastVacationsComponent } from './places/components/past-vacations/past-vacations.component';
+import { AllPlacesComponent } from './places/pages/all-places/all-places.component';
+import { UpcomingVacationsComponent } from './places/pages/upcoming-vacations/upcoming-vacations.component';
+import { PastVacationsComponent } from './places/pages/past-vacations/past-vacations.component';
 import { PlaceComponent } from './places/components/place/place.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 import { CharCountPipe } from './pipes/char-count.pipe';
