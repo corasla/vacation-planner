@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Place } from '../models';
 
 import { BehaviorSubject } from 'rxjs'
-import { UpcomingPlacesService } from './upcoming-places.service';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +39,7 @@ export class PlaceService {
       averagePrice: 3500,
     }),
   ]
-  constructor(
-    private upcomingPlacesService: UpcomingPlacesService
-  ) {
+  constructor() {
     this.allPlaces$ = new BehaviorSubject(this.allPlacesData)
   }
 
@@ -59,6 +56,11 @@ export class PlaceService {
 
   markAsGoingToVisit(place: Place) {
     place.markedForVisit = true
-    this.upcomingPlacesService.addNewPlace(place)
+    this.update(place)
+  }
+
+  update(place: Place) {
+    const placeId = this.allPlacesData.findIndex(p => p.id === place.id)
+    this.allPlacesData = this.allPlacesData.splice(placeId, 1, place)
   }
 }

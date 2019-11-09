@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PastVacationsComponent } from './past-vacations.component';
+import { PlaceComponent } from 'src/app/places/components/place/place.component';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CharCountPipe } from 'src/app/pipes/char-count.pipe';
+import { MyUnlessDirective } from 'src/app/directives/my-unless.directive'
 
 describe('PastVacationsComponent', () => {
   let component: PastVacationsComponent;
@@ -8,7 +14,8 @@ describe('PastVacationsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PastVacationsComponent ]
+      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule ],
+      declarations: [ PastVacationsComponent, PlaceComponent, CharCountPipe, MyUnlessDirective ]
     })
     .compileComponents();
   }));

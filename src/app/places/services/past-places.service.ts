@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models';
 
-import { BehaviorSubject } from 'rxjs'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
+import { PlaceService } from './place.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PastPlacesService {
-  allPlaces$: BehaviorSubject<Place[]>
-
-  allPlacesData: Array<Place> = []
-  constructor() {
-    this.allPlaces$ = new BehaviorSubject(this.allPlacesData)
+  allPlaces$: Observable<Place[]>
+  constructor(
+    private placeService: PlaceService,
+  ) {
+    this.allPlaces$ = this.placeService.allPlaces$.pipe(
+      map(places => {
+        return places.filter(place => place.markedForVisit === true)
+      })
+    )
   }
 
-  addNewPlace(place: Place) {
-    this.allPlacesData = [...this.allPlacesData, place]
-    this.allPlaces$.next(this.allPlacesData)
-  }
-
-  deletePlace(placeId: number) {
-    this.allPlacesData = [...this.allPlacesData.filter(p => p.id !== placeId)]
-    this.allPlaces$.next(this.allPlacesData)
+  removeFromVisited(place: Place) {
+    place.markAsVisited = false
+    this.placeService.update(place)
   }
 }

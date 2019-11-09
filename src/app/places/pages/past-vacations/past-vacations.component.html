@@ -1,1 +1,15 @@
-<p>past-vacations works!</p>
+<div class="general-container">
+  <div *ngFor="let place of places" class="place">
+    <place
+      [name]="place.name"
+      [description]="place.description"
+      [country]="place.country"
+      [city]="place.city"
+      [id]="place.id"
+      [image]="place.image"
+      [imageId]="place.imageId"
+      (requestDelete)="deletePlace($event)"
+      [averagePrice]="place.averagePrice"
+    ></place>
+  </div>
+</div>

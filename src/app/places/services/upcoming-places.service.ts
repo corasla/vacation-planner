@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models';
 
-import { BehaviorSubject } from 'rxjs'
-import { PastPlacesService } from './past-places.service';
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
+import { PlaceService } from './place.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UpcomingPlacesService {
-  allPlaces$: BehaviorSubject<Place[]>
-  allPlacesData: Array<Place> = []
-
+  allPlaces$: Observable<Place[]>
   constructor(
-    private pastPlacesService: PastPlacesService
+    private placeService: PlaceService,
   ) {
-    this.allPlaces$ = new BehaviorSubject(this.allPlacesData)
-  }
-
-  addNewPlace(place: Place) {
-    this.allPlacesData = [...this.allPlacesData, place]
-    this.allPlaces$.next(this.allPlacesData)
+    this.allPlaces$ = this.placeService.allPlaces$.pipe(
+      map(places => {
+        return places.filter(place => place.markAsVisited === true)
+      })
+    )
   }
 
   markAsVisited(place: Place) {
     place.markAsVisited = true
-    this.pastPlacesService.addNewPlace(place)
+    this.placeService.update(place)
   }
 
-  deletePlace(placeId: number) {
-    this.allPlacesData = [...this.allPlacesData.filter(p => p.id !== placeId)]
-    this.allPlaces$.next(this.allPlacesData)
+  removeFromUpcoming(place: Place) {
+    place.markedForVisit = false
+    place.markAsVisited = false
+    this.placeService.update(place)
   }
 }

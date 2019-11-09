@@ -56,25 +56,17 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   clickedRemove(event) {
-    // console.log('user clicked remove', event)
     this.requestDelete.emit(this.id)
   }
   
   clickedEdit(event) {
-    // console.log('user clicked edit', event)
     console.log('my input ref value -> ', this.inputElementReference.nativeElement.value)
-    console.log('my EXTERNAL input ref value -> ', this.inputElementFromParentComponent.nativeElement.value)
+    if (this.inputElementFromParentComponent) {
+      console.log('my EXTERNAL input ref value -> ', this.inputElementFromParentComponent.nativeElement.value)
+    }
   }
   
   ngOnDestroy() {
     console.log('destroying component Place -> ', this.name)
   }
-
-  // onMouseOver() {
-  //   console.log('over')
-  // }
-
-  // onMouseOut() {
-  //   console.log('out')
-  // }
 }

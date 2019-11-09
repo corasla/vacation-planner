@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/c
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Place } from '../../models'
-import { ConfirmationModalComponent } from '../../../modals'
 import { PlaceService } from '../../services/place.service';
 import { Subscription } from 'rxjs';
 
