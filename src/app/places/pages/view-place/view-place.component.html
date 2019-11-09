@@ -1,0 +1,28 @@
+<ng-container *ngIf="selectedPlace; else loading">
+  <place
+      [name]="selectedPlace.name"
+      [description]="selectedPlace.description"
+      [country]="selectedPlace.country"
+      [city]="selectedPlace.city"
+      [id]="selectedPlace.id"
+      [image]="selectedPlace.image"
+      [imageId]="selectedPlace.imageId"
+      [averagePrice]="selectedPlace.averagePrice"
+      (requestDelete)="deletePlace($event)"
+      (requestViewDetails)="onRequestViewDetails($event)"
+      [hideFooter]="true"
+    >
+    <button 
+      class="btn btn-primary"
+      (click)='onClickEdit()'
+    >Edit</button>
+  </place>
+</ng-container>
+
+<ng-template #loading>
+  Loading data...z
+</ng-template>
+
+<div class="general-container">
+  <router-outlet></router-outlet>
+</div>

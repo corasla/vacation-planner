@@ -16,6 +16,8 @@ import { PlaceComponent } from './places/components/place/place.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 import { CharCountPipe } from './pipes/char-count.pipe';
 import { MyUnlessDirective } from './directives/my-unless.directive';
+import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
+import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MyUnlessDirective } from './directives/my-unless.directive';
     PlaceComponent,
     ConfirmationModalComponent,
     CharCountPipe,
-    MyUnlessDirective
+    MyUnlessDirective,
+    ViewPlaceComponent,
+    EditPlaceComponent
   ],
   imports: [
     BrowserModule,

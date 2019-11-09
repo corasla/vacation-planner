@@ -11,8 +11,10 @@
         [id]="place.id"
         [image]="place.image"
         [imageId]="place.imageId"
-        (requestDelete)="deletePlace($event)"
         [averagePrice]="place.averagePrice"
+        [previewMode]="placeService.inEditMode"
+        (requestDelete)="deletePlace($event)"
+        (requestViewDetails)="onRequestViewDetails($event)"
       >
       <button 
         class="btn btn-primary"

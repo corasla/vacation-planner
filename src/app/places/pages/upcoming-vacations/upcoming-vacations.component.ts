@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UpcomingPlacesService } from '../../services/upcoming-places.service';
 
 import { Place } from 'src/app/places/models'
@@ -8,14 +8,17 @@ import { Place } from 'src/app/places/models'
   templateUrl: './upcoming-vacations.component.html',
   styleUrls: ['./upcoming-vacations.component.sass']
 })
-export class UpcomingVacationsComponent implements OnInit {
+export class UpcomingVacationsComponent implements OnInit, OnDestroy {
   places: Place[] = []
+  _subscriptions = []
   constructor(
     private upcomingPlacesService: UpcomingPlacesService,
   ) {
-    this.upcomingPlacesService.allPlaces$.subscribe((places: Place[]) => {
-      this.places = places
-    })
+    this._subscriptions.push(
+      this.upcomingPlacesService.allPlaces$.subscribe((places: Place[]) => {
+        this.places = places
+      })
+    )
   }
 
   unmarkPlaceAsUpcoming(place: Place) {
@@ -27,6 +30,10 @@ export class UpcomingVacationsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this._subscriptions.forEach(sub => sub.unsubscribe())
   }
 }
 

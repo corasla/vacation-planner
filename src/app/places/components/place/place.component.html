@@ -64,7 +64,7 @@
             <span class="value red">
               -{{ (averagePrice - yourPrice) | currency:'EUR'}}
             </span>
-            <ng-container *myUnless="averagePrice - yourPrice > 50">
+            <ng-container *myUnless="averagePrice - yourPrice < 50">
               <span class="label" [ngStyle]="{color:'#f00'}">
                 Jackpot!! Great savings!
               </span>
@@ -80,10 +80,10 @@
           class="btn btn-danger"
           (click)="clickedRemove($event)">Remove</button>
         <button
-          matTooltip="Edit information about this location"
+          matTooltip="View information about this location"
           mat-raised-button
           color="primary"
-          (click)="clickedEdit($event)">Edit</button>
+          (click)="clickedViewDetails($event)">View</button>
       </div>
       <hr>
       <div class="footer extra-actions">

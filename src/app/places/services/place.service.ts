@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs'
 export class PlaceService {
   allPlaces$: BehaviorSubject<Place[]>
   lastIdUsed = 2
+  inEditMode = false
 
   allPlacesData: Array<Place> = [
     new Place({

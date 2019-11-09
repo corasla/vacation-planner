@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { UpcomingPlacesService } from '../../services/upcoming-places.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Place } from 'src/app/places/models'
 import { PastPlacesService } from '../../services/past-places.service';
@@ -9,8 +8,9 @@ import { PastPlacesService } from '../../services/past-places.service';
   templateUrl: './past-vacations.component.html',
   styleUrls: ['./past-vacations.component.sass']
 })
-export class PastVacationsComponent implements OnInit {
+export class PastVacationsComponent implements OnInit, OnDestroy {
   places: Place[] = []
+  _subscriptions = []
   constructor(
     private pastPlacesService: PastPlacesService
   ) {
@@ -24,6 +24,10 @@ export class PastVacationsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  
+  ngOnDestroy() {
+    this._subscriptions.forEach(sub => sub.unsubscribe())
   }
 }
 
