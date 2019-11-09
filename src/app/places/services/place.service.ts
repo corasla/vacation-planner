@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models';
 
+import { Subject } from 'rxjs'
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlaceService {
+  allPlaces$: Subject<Place[]> = new Subject()
+
   allPlacesData: Array<Place> = [
     new Place({
       id: 1,
@@ -36,7 +40,8 @@ export class PlaceService {
   ]
   constructor() { }
 
-  getPlaces() {
-    return [...JSON.parse(JSON.stringify(this.allPlacesData))]
+  addNewPlace(place: Place) {
+    this.allPlacesData = [...this.allPlacesData, place]
+    this.allPlaces$.next(this.allPlacesData)
   }
 }

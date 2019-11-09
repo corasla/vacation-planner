@@ -1,29 +1,36 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Place } from '../../models'
 import { ConfirmationModalComponent } from '../../../modals'
 import { PlaceService } from '../../services/place.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'all-places',
   templateUrl: './all-places.component.html',
   styleUrls: ['./all-places.component.sass']
 })
-export class AllPlacesComponent implements OnInit {
+export class AllPlacesComponent implements OnInit, OnDestroy {
   @ViewChild('secondDialog', {static:false}) secondDialog: TemplateRef<MatDialog>
   pendingDeletionId = null
   pendingDeletionPlaceName: string
   dialog2Ref: MatDialogRef<any>
 
   places: Place[] = []
+
+  _subscriptions: Array<Subscription> = []
   
   constructor(
     public dialog: MatDialog,
     private placeService: PlaceService
   ) {
-    this.places = this.placeService.getPlaces()
-    
+    // this.places = this.placeService.getPlaces()
+    this._subscriptions.push(
+      this.placeService.allPlaces$.subscribe((allPlacesArr: Place[]) => {
+        this.places = allPlacesArr
+      })
+    )
     const newPlace = new Place({
       id: this.places.length + 1,
       name: 'Barcelona adventure',
@@ -34,7 +41,7 @@ export class AllPlacesComponent implements OnInit {
       averagePrice: 1800,
     })
 
-    this.places.push(newPlace)
+    this.placeService.addNewPlace(newPlace)
   }
 
   deletePlace(id: number) {
@@ -72,5 +79,9 @@ export class AllPlacesComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this._subscriptions.forEach(sub => sub.unsubscribe())
   }
 }
