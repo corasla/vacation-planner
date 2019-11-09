@@ -23,8 +23,8 @@
 </div>
 
 <!-- A second way of defining and using a modal - via templateRef -->
-<ng-template #secondDialog>
-  <h2 matDialogTitle>Modal #2 - This template dialog can also be used!</h2>
+<ng-template #templateDeleteModal>
+  <h2 matDialogTitle>Delete place {{pendingDeletionPlaceName}}({{ pendingDeletionId }})</h2>
   <div mat-dialog-content>
     <p>Are you sure you want to remove {{ pendingDeletionPlaceName }} from this list?</p>
   </div>
