@@ -5,6 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { PlaceComponent } from '../../components/place/place.component';
 import { CharCountPipe } from 'src/app/pipes/char-count.pipe';
 import { MyUnlessDirective } from 'src/app/directives/my-unless.directive';
+import { EditPlaceFormComponent } from '../../components/edit-place-form/edit-place-form.component';
+import { FormsModule } from '@angular/forms';
 
 describe('EditPlaceComponent', () => {
   let component: EditPlaceComponent;
@@ -12,8 +14,8 @@ describe('EditPlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [ EditPlaceComponent, PlaceComponent, CharCountPipe, MyUnlessDirective ]
+      imports: [RouterTestingModule, FormsModule],
+      declarations: [ EditPlaceComponent, PlaceComponent, CharCountPipe, MyUnlessDirective, EditPlaceFormComponent ]
     })
     .compileComponents();
   }));

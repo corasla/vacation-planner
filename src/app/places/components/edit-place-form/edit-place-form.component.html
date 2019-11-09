@@ -1,0 +1,87 @@
+<div class="form-container">
+  <form 
+    (ngSubmit)="onClickSave()"
+    #formRef="ngForm"
+    *ngIf="place">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        name="name"
+        id="name"
+        type="text"
+        [(ngModel)]="place.name"
+        required
+        #name="ngModel"
+      >
+      <span class="text-danger" *ngIf="name.touched && !name.valid">Invalid!</span>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        name="description"
+        id="description"
+        [(ngModel)]="place.description"
+        required
+        #description="ngModel"
+      ></textarea>
+      <span class="text-danger" *ngIf="description.touched && !description.valid">Invalid!</span>
+    </div>
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input
+        name="country"
+        id="country"
+        type="text"
+        [(ngModel)]="place.country"
+        #country="ngModel"
+        required
+      >
+      <span class="text-danger" *ngIf="country.touched && !country.valid">Invalid!</span>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        name="city"
+        id="city"
+        type="text"
+        [(ngModel)]="place.city"
+        #city="ngModel"
+        required
+      >
+      <span class="text-danger" *ngIf="city.touched && !city.valid">Invalid!</span>
+    </div>
+    <div class="form-group">
+      <label for="image_url">Image URL</label>
+      <input
+        name="image_url"
+        id="image_url"
+        type="text"
+        [(ngModel)]="place.image"
+        #image_url="ngModel"
+        required
+      >
+      <span class="text-danger" *ngIf="image_url.touched && !image_url.valid">Invalid!</span>
+    </div>
+    <div class="form-group">
+      <label for="average_price">averagePrice</label>
+      <input
+        name="average_price"
+        id="average_price"
+        type="number"
+        [(ngModel)]="place.averagePrice"
+        #average_price="ngModel"
+        required
+      >
+      <span class="text-danger" *ngIf="average_price.touched && !average_price.valid">Invalid!</span>
+    </div>
+    <button 
+      class="btn btn-primary"
+      (click)='onClickCancel()'
+      type="button"
+    >Cancel</button>
+    <button 
+      class="btn btn-primary"
+      type="submit"
+    >Save</button>
+  </form>
+</div>

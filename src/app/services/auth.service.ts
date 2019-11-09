@@ -14,7 +14,7 @@ export interface User {
 export class AuthService {
   user$: BehaviorSubject<User>
   user: User = {
-    isAuthenticated: false
+    isAuthenticated: true
   }
   constructor(
     private router: Router
