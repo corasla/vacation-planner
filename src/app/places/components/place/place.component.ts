@@ -25,6 +25,7 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() image: string
   @Input() imageId: string
   @Input() averagePrice: number
+  @Input() hideFooter: boolean = false
 
   @Output() requestDelete: EventEmitter<any> = new EventEmitter()
 

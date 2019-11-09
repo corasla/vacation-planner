@@ -10,6 +10,7 @@
       [imageId]="place.imageId"
       (requestDelete)="deletePlace($event)"
       [averagePrice]="place.averagePrice"
+      [hideFooter]="true"
     >
     <button class="btn btn-danger" (click)='unmarkPlaceAsUpcoming(place)'>Remove</button>
     <button class="btn btn-primary" (click)='markPlaceAsVisited(place)'>Mark as Visited</button>

@@ -41,6 +41,17 @@ export class PlaceService {
   ]
   constructor() {
     this.allPlaces$ = new BehaviorSubject(this.allPlacesData)
+    setTimeout(() => {
+      const newPlace = new Place({
+        name: 'Barcelona adventure',
+        description: 'Great place to visit & feast on some Paella',
+        country: 'Spain',
+        city: 'Barcelona',
+        image: 'https://ihg.scene7.com/is/image/ihg/kimpton-barcelona-1700x750-v2',
+        averagePrice: 1800,
+      })
+      this.addNewPlace(newPlace)
+    }, 500)
   }
 
   addNewPlace(place: Place) {

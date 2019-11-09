@@ -5,14 +5,14 @@ import { UpcomingVacationsComponent } from './places/pages/upcoming-vacations/up
 import { PastVacationsComponent } from './places/pages/past-vacations/past-vacations.component';
 
 const routes: Routes = [
-  { path: 'all', component: AllPlacesComponent },
-  { path: 'upcoming', component: UpcomingVacationsComponent },
-  { path: 'past', component: PastVacationsComponent },
   { 
     path: '',
     redirectTo: '/all',
     pathMatch: 'full'
   },
+  { path: 'all', component: AllPlacesComponent },
+  { path: 'upcoming', component: UpcomingVacationsComponent },
+  { path: 'past', component: PastVacationsComponent },
   { 
     path: '**',
     redirectTo: '/all',
