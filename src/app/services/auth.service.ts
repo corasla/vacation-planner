@@ -8,6 +8,7 @@ export interface User {
   isAuthenticated: boolean
   loginErrors?: any
   registrationErrors?: any
+  token?: string
   data?: any
 }
 
@@ -35,12 +36,16 @@ export class AuthService {
     firebaseRef.auth().onAuthStateChanged((user) => {
       if (user) {
         const email = user.email;
-        const uid = user.uid;
         this.user.loginErrors = null
         this.user.registrationErrors = null
-        this.user.isAuthenticated = true
-        this.user$.next(this.user)
+        user.getIdToken()
+        .then((token) => {
+            this.user.isAuthenticated = true
+            this.user.token = token
+            this.user$.next(this.user)
+          });
       } else {
+        console.log('is not')
         this.user.isAuthenticated = false
         this.user$.next(this.user)
       }
