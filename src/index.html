@@ -10,6 +10,29 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAi1aYMlans4AtbdHWMVZMkE2PvJeIcBtw",
+      authDomain: "vacation-planner-ecd82.firebaseapp.com",
+      databaseURL: "https://vacation-planner-ecd82.firebaseio.com",
+      projectId: "vacation-planner-ecd82",
+      storageBucket: "vacation-planner-ecd82.appspot.com",
+      messagingSenderId: "989011464698",
+      appId: "1:989011464698:web:d2e8dc634a02aa5bbd1443",
+      measurementId: "G-0Q7XYQRQ2B"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
   <app-root></app-root>
 </body>
 </html>

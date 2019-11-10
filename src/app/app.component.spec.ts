@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { CharCountPipe } from './pipes/char-count.pipe';
 import { MyUnlessDirective } from 'src/app/directives/my-unless.directive'
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -18,7 +19,8 @@ describe('AppComponent', () => {
         FormsModule,
         MatButtonModule,
         MatInputModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientModule,
       ],
       declarations: [
         AppComponent,

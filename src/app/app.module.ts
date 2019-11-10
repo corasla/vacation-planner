@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule } from '@angular/material'
@@ -19,7 +19,11 @@ import { MyUnlessDirective } from './directives/my-unless.directive';
 import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
 import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AuthComponent } from './authentication/pages/auth/auth.component';
+import { AuthFormComponent } from './authentication/components/auth-form/auth-form.component';
+import { RegisterFormComponent } from './authentication/components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +37,16 @@ import { HttpClientModule } from '@angular/common/http';
     MyUnlessDirective,
     ViewPlaceComponent,
     EditPlaceComponent,
-    EditPlaceFormComponent
+    EditPlaceFormComponent,
+    AuthComponent,
+    AuthFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
@@ -46,7 +54,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [{provide: MatDialogRef}],
+  providers: [
+    {provide: MatDialogRef},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationModalComponent]
 })

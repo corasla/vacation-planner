@@ -7,12 +7,34 @@ import { ViewPlaceComponent } from './places/pages/view-place/view-place.compone
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
 import { AuthGuard } from './guards/auth-guard.guard';
 import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
+import { AuthComponent } from './authentication/pages/auth/auth.component';
+import { AuthFormComponent } from './authentication/components/auth-form/auth-form.component';
+import { RegisterFormComponent } from './authentication/components/register-form/register-form.component';
 
 const routes: Routes = [
   { 
     path: '',
     redirectTo: '/all',
     pathMatch: 'full'
+  },
+  { 
+    path: 'auth', 
+    component: AuthComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        component: AuthFormComponent
+      },
+      {
+        path: 'register',
+        component: RegisterFormComponent
+      }
+    ]
   },
   { path: 'all', component: AllPlacesComponent},
   { path: 'place',

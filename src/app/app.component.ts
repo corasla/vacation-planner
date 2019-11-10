@@ -13,10 +13,6 @@ export class AppComponent {
     public authService: AuthService
   ) {}
 
-  onClickLogin() {
-    this.authService.login()
-  }
-
   onClickLogout() {
     this.authService.logout()
   }
