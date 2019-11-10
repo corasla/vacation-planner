@@ -23,6 +23,10 @@ export class EditPlaceFormComponent implements OnInit {
   ngOnInit() {
     if (!this.place) {
       this.place = Place.createEmptyPlace()
+    } else {
+      this.place = new Place({
+        ...this.place,
+      })
     }
   }
 
@@ -30,7 +34,6 @@ export class EditPlaceFormComponent implements OnInit {
     if (this.formData.form.valid) {
       const data = this.formData.form.value
       
-      console.log('saving -> ', data)
       const newData = {
         ...this.place,
         ...data
