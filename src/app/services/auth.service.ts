@@ -22,6 +22,11 @@ export class AuthService {
     this.user$ = new BehaviorSubject(this.user)
   }
 
+  register() {
+    this.user.isAuthenticated = true
+    this.user$.next(this.user)
+  }
+
   login() {
     this.user.isAuthenticated = true
     this.user$.next(this.user)
