@@ -1,4 +1,16 @@
 <div class="form-container">
+  <div class="preview-panel">
+    <place
+        [name]="place.name"
+        [description]="place.description"
+        [country]="place.country"
+        [city]="place.city"
+        [id]="place.id"
+        [image]="place.image"
+        [averagePrice]="place.averagePrice"
+        [hideFooter]="true"
+      ></place>
+  </div>
   <form 
     (ngSubmit)="onClickSave()"
     #formRef="ngForm"
@@ -13,7 +25,7 @@
         required
         #name="ngModel"
       >
-      <span class="text-danger" *ngIf="name.touched && !name.valid">Invalid!</span>
+      <span class="text-danger" *ngIf="(name.touched || formRef.submitted) && !name.valid">Invalid!</span>
     </div>
     <div class="form-group">
       <label for="description">Description</label>
@@ -24,7 +36,7 @@
         required
         #description="ngModel"
       ></textarea>
-      <span class="text-danger" *ngIf="description.touched && !description.valid">Invalid!</span>
+      <span class="text-danger" *ngIf="(description.touched || formRef.submitted) && !description.valid">Invalid!</span>
     </div>
     <div class="form-group">
       <label for="country">Country</label>
@@ -36,7 +48,7 @@
         #country="ngModel"
         required
       >
-      <span class="text-danger" *ngIf="country.touched && !country.valid">Invalid!</span>
+      <span class="text-danger" *ngIf="(country.touched || formRef.submitted) && !country.valid">Invalid!</span>
     </div>
     <div class="form-group">
       <label for="city">City</label>
@@ -48,40 +60,43 @@
         #city="ngModel"
         required
       >
-      <span class="text-danger" *ngIf="city.touched && !city.valid">Invalid!</span>
+      <span class="text-danger" *ngIf="(city.touched || formRef.submitted) && !city.valid">Invalid!</span>
     </div>
     <div class="form-group">
-      <label for="image_url">Image URL</label>
+      <label for="image">Image URL</label>
       <input
-        name="image_url"
-        id="image_url"
+        name="image"
+        id="image"
         type="text"
         [(ngModel)]="place.image"
-        #image_url="ngModel"
+        #image="ngModel"
         required
       >
-      <span class="text-danger" *ngIf="image_url.touched && !image_url.valid">Invalid!</span>
+      <span class="text-danger" *ngIf="(image.touched || formRef.submitted) && !image.valid">Invalid!</span>
     </div>
     <div class="form-group">
-      <label for="average_price">averagePrice</label>
+      <label for="averagePrice">Average Price</label>
       <input
-        name="average_price"
-        id="average_price"
+        name="averagePrice"
+        id="averagePrice"
         type="number"
         [(ngModel)]="place.averagePrice"
-        #average_price="ngModel"
+        #averagePrice="ngModel"
         required
       >
-      <span class="text-danger" *ngIf="average_price.touched && !average_price.valid">Invalid!</span>
+      <span class="text-danger" *ngIf="(averagePrice.touched || formRef.submitted) && !averagePrice.valid">Invalid!</span>
     </div>
-    <button 
-      class="btn btn-primary"
-      (click)='onClickCancel()'
-      type="button"
-    >Cancel</button>
-    <button 
-      class="btn btn-primary"
-      type="submit"
-    >Save</button>
+    <div class="footer">
+      <button 
+        class="btn btn-warning"
+        (click)='onClickCancel()'
+        type="button"
+      >Cancel</button>
+      <button 
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="formRef.invalid"
+      >Save</button>
+    </div>
   </form>
 </div>

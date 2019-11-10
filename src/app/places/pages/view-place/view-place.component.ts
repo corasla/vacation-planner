@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ViewPlaceComponent implements OnInit, OnDestroy {
   selectedPlace: Place = null
-  selectedPlaceId: number = - 1
+  selectedPlaceId: string = null
   _subscriptions = []
   constructor(
     private placeService: PlaceService,
@@ -24,7 +24,7 @@ export class ViewPlaceComponent implements OnInit, OnDestroy {
           this.selectedPlaceId = params.id
           this._subscriptions.push(
             this.placeService.allPlaces$.subscribe(allPlaces => {
-              this.selectedPlace = allPlaces.find(p => +p.id === +this.selectedPlaceId)
+              this.selectedPlace = allPlaces.find(p => p.id == this.selectedPlaceId)
             })
           )
         }

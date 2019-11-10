@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { PlaceComponent } from '../../components/place/place.component';
 import { CharCountPipe } from 'src/app/pipes/char-count.pipe';
 import { MyUnlessDirective } from 'src/app/directives/my-unless.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ViewPlaceComponent', () => {
   let component: ViewPlaceComponent;
@@ -12,7 +13,7 @@ describe('ViewPlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [ ViewPlaceComponent, PlaceComponent, CharCountPipe, MyUnlessDirective ]
     })
     .compileComponents();

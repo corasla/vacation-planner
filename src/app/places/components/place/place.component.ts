@@ -21,7 +21,7 @@ export class PlaceComponent implements OnInit, OnChanges, OnDestroy {
   @Input() description: string
   @Input() country: string
   @Input() city: string
-  @Input() id: number
+  @Input() id: string
   @Input() image: string
   @Input() imageId: string
   @Input() averagePrice: number
