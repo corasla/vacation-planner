@@ -7,6 +7,7 @@ import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/mater
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CharCountPipe } from 'src/app/pipes/char-count.pipe';
 import { MyUnlessDirective } from 'src/app/directives/my-unless.directive'
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UpcomingVacationsComponent', () => {
   let component: UpcomingVacationsComponent;
@@ -14,7 +15,7 @@ describe('UpcomingVacationsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule ],
+      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule, HttpClientModule ],
       declarations: [ UpcomingVacationsComponent, PlaceComponent, CharCountPipe, MyUnlessDirective ]
     })
     .compileComponents();

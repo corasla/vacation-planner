@@ -36,7 +36,7 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
     )
   }
 
-  deletePlace(id: number) {
+  deletePlace(id: string) {
     this.pendingDeletionId = id
     this.pendingDeletionPlaceName = this.places.find(p => p.id === id).name,
     this.dialog2Ref = this.dialog.open(this.templateDeleteModal, {
@@ -44,7 +44,7 @@ export class AllPlacesComponent implements OnInit, OnDestroy {
     })
   }
 
-  onRequestViewDetails(id : number) {
+  onRequestViewDetails(id: string) {
     this.router.navigate(['/place/' + id])
   }
 

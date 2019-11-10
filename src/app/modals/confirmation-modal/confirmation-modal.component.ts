@@ -10,7 +10,7 @@ export class ConfirmationModalComponent{
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmationModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {name: string, id: number}) {}
+    @Inject(MAT_DIALOG_DATA) public data: {name: string, id: string}) {}
 
   onCancelClick(): void {
     this.dialogRef.close();

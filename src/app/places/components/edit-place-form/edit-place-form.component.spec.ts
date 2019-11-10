@@ -8,6 +8,7 @@ import { MyUnlessDirective } from 'src/app/directives/my-unless.directive';
 import { CommonModule } from '@angular/common';
 import { PlaceService } from '../../services/place.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('EditPlaceFormComponent', () => {
   let component: EditPlaceFormComponent;
@@ -15,7 +16,7 @@ describe('EditPlaceFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, CommonModule, RouterTestingModule],
+      imports: [FormsModule, CommonModule, RouterTestingModule, HttpClientModule],
       declarations: [ EditPlaceFormComponent, PlaceComponent, CharCountPipe, MyUnlessDirective ],
       providers: [PlaceService]
     })

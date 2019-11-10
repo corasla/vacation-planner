@@ -19,6 +19,7 @@ import { MyUnlessDirective } from './directives/my-unless.directive';
 import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
 import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditPlaceFormComponent } from './places/components/edit-place-form/edit
     MatInputModule,
     MatButtonModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [{provide: MatDialogRef}],
   bootstrap: [AppComponent],

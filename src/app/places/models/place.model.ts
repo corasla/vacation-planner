@@ -1,5 +1,5 @@
 export interface IPlace {
-  id?: number
+  id?: string
   name: string
   description: string
   country: string
@@ -25,7 +25,7 @@ export class Place implements IPlace{
       averagePrice: 3.5
     })
   }
-  id?: number
+  id?: string
   name: string
   description: string
   country: string
@@ -47,7 +47,9 @@ export class Place implements IPlace{
       image,
       id,
       imageId,
-      averagePrice
+      averagePrice,
+      markedAsVisited,
+      markedForVisit
     } = data
 
     this.id = id
@@ -59,5 +61,7 @@ export class Place implements IPlace{
     this.image = image
     this.imageId = imageId
     this.averagePrice = averagePrice
+    this.markedAsVisited = markedAsVisited
+    this.markedForVisit = markedForVisit
   }
 }

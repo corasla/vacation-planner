@@ -8,6 +8,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CharCountPipe } from 'src/app/pipes/char-count.pipe';
 import { MyUnlessDirective } from 'src/app/directives/my-unless.directive'
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AllPlacesComponent', () => {
   let component: AllPlacesComponent;
@@ -15,7 +16,7 @@ describe('AllPlacesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule, RouterTestingModule ],
+      imports: [ FormsModule, MatButtonModule, MatInputModule, NoopAnimationsModule, MatDialogModule, RouterTestingModule, HttpClientModule ],
       declarations: [ AllPlacesComponent, PlaceComponent, CharCountPipe, MyUnlessDirective ]
     })
     .compileComponents();

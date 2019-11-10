@@ -39,7 +39,7 @@ export class EditPlaceFormComponent implements OnInit {
         ...data
       }
 
-      if (this.place.id >= 0) {
+      if (this.place.id) {
         this.placeService.update(newData)
       } else {
         this.placeService.addNewPlace(newData)
