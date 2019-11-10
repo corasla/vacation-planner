@@ -19,7 +19,8 @@ import { MyUnlessDirective } from './directives/my-unless.directive';
 import { ViewPlaceComponent } from './places/pages/view-place/view-place.component';
 import { EditPlaceComponent } from './places/pages/edit-place/edit-place.component';
 import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [{provide: MatDialogRef}],
+  providers: [
+    {provide: MatDialogRef},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationModalComponent]
 })
