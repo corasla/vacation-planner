@@ -21,6 +21,9 @@ import { EditPlaceComponent } from './places/pages/edit-place/edit-place.compone
 import { EditPlaceFormComponent } from './places/components/edit-place-form/edit-place-form.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AuthComponent } from './authentication/pages/auth/auth.component';
+import { AuthFormComponent } from './authentication/components/auth-form/auth-form.component';
+import { RegisterFormComponent } from './authentication/components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     MyUnlessDirective,
     ViewPlaceComponent,
     EditPlaceComponent,
-    EditPlaceFormComponent
+    EditPlaceFormComponent,
+    AuthComponent,
+    AuthFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

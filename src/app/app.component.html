@@ -6,7 +6,7 @@
   </nav>
   <div class="auth-button">
     <button class="button btn btn-warning" routerLink="/place/create" *ngIf="(authService.user$ | async).isAuthenticated">+Add Place</button>
-    <button class="button btn btn-primary" (click)="onClickLogin()" *ngIf="!(authService.user$ | async).isAuthenticated">Login</button>
+    <button class="button btn btn-primary" routerLink="/auth" *ngIf="!(authService.user$ | async).isAuthenticated">Go to Login Page</button>
     <button class="button btn btn-primary" (click)="onClickLogout()" *ngIf="(authService.user$ | async).isAuthenticated">Logout</button>
   </div>
 </div>
