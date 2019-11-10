@@ -25,6 +25,7 @@
         [(ngModel)]="place.name"
         required
         #name="ngModel"
+        class="form-control"
       >
       <span class="text-danger" *ngIf="(name.touched || formRef.submitted) && !name.valid">Invalid!</span>
     </div>
@@ -36,6 +37,7 @@
         [(ngModel)]="place.description"
         required
         #description="ngModel"
+        class="form-control"
       ></textarea>
       <span class="text-danger" *ngIf="(description.touched || formRef.submitted) && !description.valid">Invalid!</span>
     </div>
@@ -48,6 +50,7 @@
         [(ngModel)]="place.country"
         #country="ngModel"
         required
+        class="form-control"
       >
       <span class="text-danger" *ngIf="(country.touched || formRef.submitted) && !country.valid">Invalid!</span>
     </div>
@@ -60,6 +63,7 @@
         [(ngModel)]="place.city"
         #city="ngModel"
         required
+        class="form-control"
       >
       <span class="text-danger" *ngIf="(city.touched || formRef.submitted) && !city.valid">Invalid!</span>
     </div>
@@ -71,6 +75,7 @@
         type="text"
         [(ngModel)]="place.image"
         #image="ngModel"
+        class="form-control"
       >
       <span class="text-danger" *ngIf="(image.touched || formRef.submitted) && !image.valid">Invalid!</span>
     </div>
@@ -82,6 +87,7 @@
         type="text"
         [(ngModel)]="place.imageId"
         #imageId="ngModel"
+        class="form-control"
       >
       <span class="text-danger" *ngIf="(imageId.touched || formRef.submitted) && !imageId.valid">Invalid!</span>
     </div>
@@ -94,6 +100,7 @@
         [(ngModel)]="place.averagePrice"
         #averagePrice="ngModel"
         required
+        class="form-control"
       >
       <span class="text-danger" *ngIf="(averagePrice.touched || formRef.submitted) && !averagePrice.valid">Invalid!</span>
     </div>

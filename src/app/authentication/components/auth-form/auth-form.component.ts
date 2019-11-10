@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AuthFormComponent implements OnInit {
   loginForm: FormGroup
+  errors = false
 
   constructor(
     private authService: AuthService
@@ -16,14 +17,22 @@ export class AuthFormComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(8)])
+    })
+
+    this.loginForm.valueChanges.subscribe(() => {
+      // console.log('maybe it changed! -> ', this.loginForm.value)
+    })
+
+    this.authService.user$.subscribe((userData) => {
+      this.errors = !!userData.loginErrors
     })
   }
 
   login() {
     console.log(this.loginForm)
-    this.authService.login()
+    this.authService.login(this.loginForm.value)
   }
 
 }

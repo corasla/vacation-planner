@@ -16,12 +16,4 @@ export class AuthComponent implements OnInit {
   toggleForm() {
     this.isOnLoginPage = !this.isOnLoginPage
   }
-
-  onClickedRegister(data) {
-
-  }
-
-  onClickedLogin(data) {
-
-  }
 }

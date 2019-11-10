@@ -2,10 +2,18 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs'
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 export interface User {
-  isAuthenticated: boolean,
+  isAuthenticated: boolean
+  loginErrors?: any
+  registrationErrors?: any
   data?: any
+}
+
+export interface AuthData {
+  email: string
+  password: string
 }
 
 @Injectable({
@@ -14,27 +22,86 @@ export interface User {
 export class AuthService {
   user$: BehaviorSubject<User>
   user: User = {
-    isAuthenticated: true
+    isAuthenticated: false
   }
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.user$ = new BehaviorSubject(this.user)
+   
+    const windowRef:any = window
+    const firebaseRef = windowRef.firebase
+    firebaseRef.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const email = user.email;
+        const uid = user.uid;
+        this.user.loginErrors = null
+        this.user.registrationErrors = null
+        this.user.isAuthenticated = true
+        this.user$.next(this.user)
+      } else {
+        this.user.isAuthenticated = false
+        this.user$.next(this.user)
+      }
+    });
   }
 
-  register() {
+  register(userData: AuthData) {
+    const windowRef:any = window
+    const firebaseRef = windowRef.firebase
+
+    const {
+      email,
+      password
+    } = userData
+
+    firebaseRef.auth().createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log('res', res)
+        this.router.navigate(['/'])
+      })
+      .catch((err) => {
+        console.error('err -> ', err)
+        this.user.registrationErrors = err
+        this.user$.next(this.user)
+      })
+
     this.user.isAuthenticated = true
     this.user$.next(this.user)
   }
 
-  login() {
+  login(userData: AuthData) {
+    const windowRef:any = window
+    const firebaseRef = windowRef.firebase
+
+    const {
+      email,
+      password
+    } = userData
+
+    firebaseRef.auth().signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log('res', res)
+        this.router.navigate(['/'])
+      })
+      .catch((err) => {
+        console.error('err -> ', err)
+        this.user.loginErrors = err
+        this.user$.next(this.user)
+      })
+
     this.user.isAuthenticated = true
     this.user$.next(this.user)
   }
 
   logout() {
-    this.user.isAuthenticated = false
-    this.user$.next(this.user)
-    this.router.navigate(['/'])
+    const windowRef:any = window
+    const firebaseRef = windowRef.firebase
+    firebaseRef.auth().signOut().then(() => {
+      this.user.isAuthenticated = false
+      this.user$.next(this.user)
+      this.router.navigate(['/'])
+    })
   }
 }
