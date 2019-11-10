@@ -7,6 +7,7 @@
         [city]="place.city"
         [id]="place.id"
         [image]="place.image"
+        [imageId]="place.imageId"
         [averagePrice]="place.averagePrice"
         [hideFooter]="true"
       ></place>
@@ -70,9 +71,19 @@
         type="text"
         [(ngModel)]="place.image"
         #image="ngModel"
-        required
       >
       <span class="text-danger" *ngIf="(image.touched || formRef.submitted) && !image.valid">Invalid!</span>
+    </div>
+    <div class="form-group">
+      <label for="image">Image ID</label>
+      <input
+        name="imageId"
+        id="imageId"
+        type="text"
+        [(ngModel)]="place.imageId"
+        #imageId="ngModel"
+      >
+      <span class="text-danger" *ngIf="(imageId.touched || formRef.submitted) && !imageId.valid">Invalid!</span>
     </div>
     <div class="form-group">
       <label for="averagePrice">Average Price</label>
