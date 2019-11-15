@@ -14,7 +14,7 @@
         class="form-control"
         autocomplete="new-password"
       >
-      <div class="text-danger" *ngIf="(loginForm.submitted || loginForm.controls.email.touched) && loginForm.controls.email.invalid">
+      <div class="text-danger" *ngIf="(loginForm.controls.email.touched) && loginForm.controls.email.invalid">
           <div *ngIf="loginForm.controls.email.errors.email">Invalid email</div>
           <div *ngIf="loginForm.controls.email.errors.required">Required</div>
         </div>
@@ -28,7 +28,7 @@
         autocomplete="new-password"
         class="form-control"
       >
-      <div class="text-danger" *ngIf="(loginForm.submitted || loginForm.controls.password.touched) && loginForm.controls.password.invalid">
+      <div class="text-danger" *ngIf="(loginForm.controls.password.touched) && loginForm.controls.password.invalid">
         <div *ngIf="loginForm.controls.password.errors.minlength">Min length is 8 characters</div>
         <div *ngIf="loginForm.controls.password.errors.required">Required</div>
       </div>
