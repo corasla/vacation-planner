@@ -25,6 +25,31 @@ import { AuthComponent } from './authentication/pages/auth/auth.component';
 import { AuthFormComponent } from './authentication/components/auth-form/auth-form.component';
 import { RegisterFormComponent } from './authentication/components/register-form/register-form.component';
 
+
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import * as firebase from "firebase/app";
+
+// If you enabled Analytics in your project, add the Firebase SDK for Analytics
+import "firebase/analytics";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+const firebaseConfig = {
+  apiKey: "AIzaSyAi1aYMlans4AtbdHWMVZMkE2PvJeIcBtw",
+  authDomain: "vacation-planner-ecd82.firebaseapp.com",
+  databaseURL: "https://vacation-planner-ecd82.firebaseio.com",
+  projectId: "vacation-planner-ecd82",
+  storageBucket: "vacation-planner-ecd82.appspot.com",
+  messagingSenderId: "989011464698",
+  appId: "1:989011464698:web:d2e8dc634a02aa5bbd1443",
+  measurementId: "G-0Q7XYQRQ2B"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
 @NgModule({
   declarations: [
     AppComponent,

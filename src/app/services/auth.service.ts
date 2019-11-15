@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs'
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import * as firebase from "firebase/app";
+
 export interface User {
   isAuthenticated: boolean
   loginErrors?: any
@@ -31,9 +33,7 @@ export class AuthService {
   ) {
     this.user$ = new BehaviorSubject(this.user)
    
-    const windowRef:any = window
-    const firebaseRef = windowRef.firebase
-    firebaseRef.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const email = user.email;
         this.user.loginErrors = null
@@ -53,15 +53,13 @@ export class AuthService {
   }
 
   register(userData: AuthData) {
-    const windowRef:any = window
-    const firebaseRef = windowRef.firebase
 
     const {
       email,
       password
     } = userData
 
-    firebaseRef.auth().createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((res) => {
         console.log('res', res)
         this.router.navigate(['/'])
@@ -77,15 +75,13 @@ export class AuthService {
   }
 
   login(userData: AuthData) {
-    const windowRef:any = window
-    const firebaseRef = windowRef.firebase
 
     const {
       email,
       password
     } = userData
 
-    firebaseRef.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().signInWithEmailAndPassword(email, password)
       .then((res) => {
         console.log('res', res)
         this.router.navigate(['/'])
@@ -101,9 +97,7 @@ export class AuthService {
   }
 
   logout() {
-    const windowRef:any = window
-    const firebaseRef = windowRef.firebase
-    firebaseRef.auth().signOut().then(() => {
+    firebase.auth().signOut().then(() => {
       this.user.isAuthenticated = false
       this.user$.next(this.user)
       this.router.navigate(['/'])
