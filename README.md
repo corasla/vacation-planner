@@ -1,3 +1,7 @@
+# Purpose
+
+Base app on which I held an Angular8, hands-on workshop (coded it from scratch)
+
 # VacationPlanner
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
